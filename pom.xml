@@ -20,12 +20,6 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <spring.version>3.1.1.RELEASE</spring.version>
         <slf4j.version>1.6.4</slf4j.version>
-        
-        <spring-data-version>1.0.3.RELEASE</spring-data-version>
-        
-        <eclipselink-version>2.3.2</eclipselink-version>
-        <eclipselink-jpa-version>2.0.0</eclipselink-jpa-version>
-        <hsqldb-version>1.8.0.10</hsqldb-version>
     </properties>
     
     <dependencies>
@@ -89,17 +83,17 @@
             <scope>provided</scope>
         </dependency>
         
-        
-           <!-- db -->
+        <!-- Database -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-version}</version>
+            <version>1.0.3.RELEASE</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -119,35 +113,37 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
-            <version>${eclipselink-version}</version>
+            <version>2.3.2</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>${eclipselink-jpa-version}</version>
+            <version>2.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>${hsqldb-version}</version>
+            <version>2.2.8</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-instrument</artifactId>
             <version>${spring.version}</version>
         </dependency>
         
-        <!-- postgresql -->
+        <!-- PostgreSQL -->
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>8.4-702.jdbc3</version>
+            <version>9.1-901-1.jdbc4</version>
             <classifier/>
         </dependency>
         
