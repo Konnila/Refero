@@ -7,8 +7,5 @@
             <goal>jetty:run</goal>
             
         </goals>
-        <activatedProfiles>
-                <activatedProfile>dev</activatedProfile>
-            </activatedProfiles>
     </action>
 </actions>
