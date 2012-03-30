@@ -19,6 +19,7 @@
 
     <jpa:repositories base-package="ohtu.refero.repositories" />
     
+    <!-- Database entity manager -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="packagesToScan" value="ohtu.refero.models" />
         <property name="persistenceUnitName" value="${persistenceUnitName}" />
@@ -66,6 +67,7 @@
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="properties" value="persistenceUnitName=persistenceUnitDev" />
         </bean>
+        
         <jdbc:embedded-database id="dataSource" type="HSQL" />
     </beans>
 </beans>
