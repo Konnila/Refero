@@ -155,6 +155,14 @@
             <version>4.10</version>  
             <scope>test</scope>
         </dependency>
+        
+        <!-- easyb -->
+        <dependency>
+            <groupId>org.easyb</groupId>
+            <artifactId>easyb-core</artifactId>
+            <version>1.5</version>
+            <scope>test</scope>        
+        </dependency>
     </dependencies>
     
     <repositories>
@@ -166,6 +174,25 @@
 
     <build>
         <plugins>
+            <!-- easyb -->
+            <plugin>
+                <groupId>org.easyb</groupId>
+                <artifactId>maven-easyb-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <storyType>html</storyType>
+                    <storyReport>${basedir}/target/easyb/easyb-report.html</storyReport>
+                </configuration>
+            </plugin>
+            
             <!-- Jetty plugin for Maven -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
