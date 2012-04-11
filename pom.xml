@@ -74,14 +74,6 @@
             <scope>runtime</scope>
         </dependency>
         
-        <!-- JSP -->
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.2</version>
-            <scope>provided</scope>
-        </dependency>
-        
         <!-- Database -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -139,6 +131,21 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
             <classifier/>
+        </dependency>
+        
+        <!-- JSP -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- JSTL -->
+        <dependency>
+	    <groupId>jstl</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
         </dependency>
         
         <!-- JUnit -->
