@@ -7,7 +7,7 @@
     </head>
     <body>
         Let's add an article!
-        <form method="post" action="newArticle">
+        <form method="post" action="article">
             Author:<input type="text" name="author"/><br>    
             Title:<input type="text" name="title"/><br>
             Journal:<input type="text" name="journal"/><br>  
