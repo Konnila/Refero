@@ -67,7 +67,7 @@ public class Article extends JPAObject {
         }
 
         Article other = (Article) obj;
-        if (this.getId() != other.getId() && (this.getId() == null || !this.getId().equals(other.getId()))) {
+        if (this.getId() == null || other.getId() == null || this.getId() != other.getId()) {
             return false;
         }
 
