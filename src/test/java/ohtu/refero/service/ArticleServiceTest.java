@@ -38,5 +38,6 @@ public class ArticleServiceTest {
         List<Article> l = a.getArticles();
         assertEquals(l.contains(b), true);
         assertEquals(a.addArticle(null), null);
+        assertEquals(a.getArticleById(b.getId()), b);
     }
 }
