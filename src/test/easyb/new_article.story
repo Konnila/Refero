@@ -1,16 +1,16 @@
 description 'User can add an article to the database'
  
-scenario "user can add an article to the database", {
+scenario 'user can add an article to the database', {
 
-    given 'command add article selected' {
+    given 'command add article selected', {
         
     }
 
-    when 'valid information is entered' {
+    when 'valid information is entered', {
         
     }
 
-    then 'article will be added to the database' {
+    then 'article will be added to the database', {
         
     }
 }
