@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class ArticleTest {
  
     Article a;
+    
     @Before
     public void initialize() {
         a = new Article();
