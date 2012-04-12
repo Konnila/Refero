@@ -26,13 +26,10 @@ public class ArticleController {
         if (article == null)
             return "redirect:/article";
         articleServ.addArticle(article);
-        return "success";
+        return "redirect:/";
     }
     
-    @RequestMapping(value="list", method= RequestMethod.GET)
-    public String listArticles(Model model) {
-        List<Article> articles = articleServ.getArticles();
-        model.addAttribute("list", articles);
-        return "index";
-    }
+
+    
+
 }
