@@ -1,5 +1,7 @@
 package ohtu.refero.service;
 
-public interface ArticleService {
+import ohtu.refero.models.Article;
 
+public interface ArticleService {
+    void addArticle(Article article);
 }

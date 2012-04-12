@@ -1,5 +1,10 @@
+<%-- 
+    Document   : success
+    Created on : Apr 12, 2012, 9:05:21 PM
+    Author     : Stolichnaya
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,8 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Article added succesfully!</h1>
         
-        If you wish to add an article, go <a href="/article">HERE</a> 
+        If you wish to add another article, go <a href="/article">HERE</a> 
     </body>
 </html>
