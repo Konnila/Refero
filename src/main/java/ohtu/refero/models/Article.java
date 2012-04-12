@@ -74,9 +74,4 @@ public class Article extends JPAObject {
         
         return true;
     }
-
-    @Override
-    public int hashCode() {
-        return author.hashCode();
-    }
 }
