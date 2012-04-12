@@ -173,7 +173,21 @@
             <groupId>org.easyb</groupId>
             <artifactId>easyb-core</artifactId>
             <version>1.5</version>
-            <scope>test</scope>        
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-lang</artifactId>
+                    <groupId>commons-lang</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.20.0</version> 
+            <scope>test</scope>
         </dependency>
     </dependencies>
     
