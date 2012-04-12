@@ -1,10 +1,12 @@
 package ohtu.refero.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import ohtu.refero.models.Article;
 import ohtu.refero.repositories.ArticleRepository;
 import org.junit.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -33,11 +35,25 @@ public class ArticleServiceTest {
     }
     
     @Test
-    public void addArticleTest() {
+    public void addAndfindArticleTest() {
         a.addArticle(b);
-        List<Article> l = a.getArticles();
-        assertEquals(l.contains(b), true);
-        assertEquals(a.addArticle(null), null);
         assertEquals(a.getArticleById(b.getId()), b);
+    }
+    
+    @Test
+    public void findAllArticles() {
+        Random r = new Random();
+        ArrayList<Article> l = new ArrayList<Article>();
+        for (int i = 0; i < 25; i++) {
+            Article newArticle = new Article();
+            newArticle.setId(r.nextLong());
+            l.add(newArticle);
+            a.addArticle(newArticle);
+        }
+        
+        for (Article article : a.getArticles()) {
+            if (!l.contains(article))
+                fail("List was missing some articles");
+        }
     }
 }
