@@ -51,8 +51,8 @@ public class ArticleServiceTest {
             a.addArticle(newArticle);
         }
         
-        for (Article article : a.getArticles()) {
-            if (!l.contains(article))
+        for (Article article : l) {
+            if (!a.getArticles().contains(article))
                 fail("List was missing some articles");
         }
     }
