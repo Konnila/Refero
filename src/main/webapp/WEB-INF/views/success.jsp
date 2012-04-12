@@ -14,6 +14,7 @@
     <body>
         <h1>Article added succesfully!</h1>
         
-        If you wish to add another article, go <a href="/article">HERE</a> 
+        If you wish to ADD another article, go <a href="/article">HERE</a><br>
+        If you wish to VIEW all the articles, go <a href="/list">HERE</a> 
     </body>
 </html>

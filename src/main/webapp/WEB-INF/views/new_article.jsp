@@ -13,7 +13,7 @@
             Journal:<input type="text" name="journal"/><br>  
             Volume:<input type="text" name="volume"/>  <br>
             Number:<input type="text" name="number"/>  <br>
-            Year:<input type="text" name="ReleaseYear"/><br>
+            Year:<input type="text" name="releaseYear"/><br>
             <input type="submit" name="submit"/><br>
         </form>
     </body>

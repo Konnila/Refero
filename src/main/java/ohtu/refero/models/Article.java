@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class Article extends JPAObject {
-    
-    
+
     private String author, title, journal;
     private int volume, number, releaseYear;
 
@@ -49,29 +48,29 @@ public class Article extends JPAObject {
         this.volume = volume;
     }
 
-    public int getYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
-    public void setYear(int year) {
-        this.releaseYear = year;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
-        
+
         if (getClass() != obj.getClass()) {
             return false;
         }
-        
+
         Article other = (Article) obj;
         if (this.getId() != other.getId() && (this.getId() == null || !this.getId().equals(other.getId()))) {
             return false;
         }
-        
+
         return true;
     }
 }

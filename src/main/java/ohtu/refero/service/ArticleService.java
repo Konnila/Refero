@@ -1,7 +1,9 @@
 package ohtu.refero.service;
 
+import java.util.List;
 import ohtu.refero.models.Article;
 
 public interface ArticleService {
-    void addArticle(Article article);
+    Article addArticle(Article article);
+    List<Article> getArticles();
 }
