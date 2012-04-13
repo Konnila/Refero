@@ -3,8 +3,8 @@ package ohtu.refero.models;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
-
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class ArticleTest {
  
@@ -20,6 +20,13 @@ public class ArticleTest {
         a.setReleaseYear(1999);
         a.setVolume(2);
         a.setId(Long.MIN_VALUE);
+    }
+    
+    @Test
+    public void isNew() {
+        
+        Article article = new Article();
+        assertTrue(article.isNew());
     }
     
     @Test
@@ -44,6 +51,9 @@ public class ArticleTest {
         assertEquals(b.equals(a), false);
         b.setId(null);
         assertEquals(b.equals(a), false);
+        
+        a.setId(null);
+        assertFalse(a.equals(b));
     }
     
 }

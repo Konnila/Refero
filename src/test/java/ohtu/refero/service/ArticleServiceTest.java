@@ -35,6 +35,11 @@ public class ArticleServiceTest {
     }
     
     @Test
+    public void addingNullReturnsNull() {
+        assertEquals(null, a.addArticle(null));
+    }
+    
+    @Test
     public void addAndfindArticleTest() {
         a.addArticle(b);
         assertEquals(a.getArticleById(b.getId()), b);
