@@ -233,10 +233,16 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>8.1.2.v20120308</version>
                 <configuration>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                        <port>9090</port>
+                        <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
                     <reload>automatic</reload>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
                     <stopKey>stopMaven</stopKey>
-                    <stopPort>9966</stopPort>
+                    <stopPort>9096</stopPort>
                 </configuration>
                 <executions>
                     <execution>

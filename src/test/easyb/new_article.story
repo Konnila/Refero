@@ -15,7 +15,7 @@ scenario 'user can add an article with valid information', {
 
     when 'valid information is entered', {
         
-        webDriver.get("http://localhost:8080/article")
+        webDriver.get("http://localhost:9090/article")
         
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)

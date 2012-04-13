@@ -10,12 +10,13 @@ scenario 'user can list all articles', {
 
     given 'command list articles selected', {
 
+        addArticleAddress = "http://localhost:9090/article"
         webDriver = new HtmlUnitDriver();
     }
 
     when 'list contains articles', {
 
-        webDriver.get("http://localhost:8080/article")
+        webDriver.get(addArticleAddress)
         
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)
@@ -49,7 +50,7 @@ scenario 'user can list all articles', {
 
         element.submit()
 
-        webDriver.get("http://localhost:8080/article")
+        webDriver.get(addArticleAddress)
         
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)
