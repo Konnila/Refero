@@ -3,18 +3,39 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Refero - Add article</title>
     </head>
     <body>
-        Let's add an article!
+        <h1>Refero</h1>
+
+        <h2>Navigation</h2>
+        
+        <ul>
+            <li><a href="/">All articles</a></li>
+        </ul>
+        
+        <h2>Let's add an article!</h2>
         <form method="post" action="article">
-            Author:<input type="text" name="author"/><br>    
-            Title:<input type="text" name="title"/><br>
-            Journal:<input type="text" name="journal"/><br>  
-            Volume:<input type="text" name="volume"/>  <br>
-            Number:<input type="text" name="number"/>  <br>
-            Year:<input type="text" name="releaseYear"/><br>
-            <input type="submit" name="submit"/><br>
+            
+            <label>Author:</label>
+            <input type="text" name="author"><br>    
+            
+            <label>Title:</label>
+            <input type="text" name="title"><br>
+            
+            <label>Journal:</label>
+            <input type="text" name="journal"><br>
+            
+            <label>Volume:</label>
+            <input type="text" name="volume"><br>
+            
+            <label>Number:</label>
+            <input type="text" name="number"><br>
+            
+            <label>Year:</label>
+            <input type="text" name="releaseYear"><br>
+            
+            <input type="submit" name="Add article"><br>
         </form>
     </body>
 </html>
