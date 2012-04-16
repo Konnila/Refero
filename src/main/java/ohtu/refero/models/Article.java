@@ -2,15 +2,27 @@ package ohtu.refero.models;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.*;
+import org.hibernate.validator.constraints.*;
 
 @Entity
 public class Article extends JPAObject {
 
-    private String author, title, journal, publisher, address;
-    private Integer volume, number, releaseYear;
+    @NotBlank(message="Author can't be empty.")
+    private String author;
+    @NotBlank(message="Title can't be empty.")
+    private String title;
+    @NotBlank(message="Journal can't be empty.")
+    private String journal;
+    private String publisher;
+    private String address;
+    //@Min(0, message = "numbers plz")
+    @NotNull(message="Volume can't be empty.")
+    private Integer volume; 
+    private Integer number;
+    @NotNull(message="Year can't be empty.")
+    private Integer releaseYear;
 
-
-    
     public String getAuthor() {
         return author;
     }
@@ -58,11 +70,11 @@ public class Article extends JPAObject {
     public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
-    
+
     public String getPublisher() {
         return publisher;
     }
-    
+
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }

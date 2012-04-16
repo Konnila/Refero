@@ -20,28 +20,36 @@
         <form:form method="POST" commandName="articleForm" action="article">
 
             <form:label path="author">Author:</form:label>
-            <form:input path="author" /><br>    
+            <form:input path="author" />
+            <form:errors path ="author"/> <br>    
 
             <form:label path="title">Title:</form:label>
-            <form:input path="title" /><br>
+            <form:input path="title" />
+            <form:errors path ="title"/><br>
 
             <form:label path="journal">Journal:</form:label>
-            <form:input path="journal" /><br>
+            <form:input path="journal" />
+            <form:errors path ="journal"/><br>
 
             <form:label path="volume">Volume:</form:label>
-            <form:input path="volume" /><br>
+            <form:input path="volume" />
+            <form:errors path ="volume"/><br>
 
             <form:label path="number">Number:</form:label>
-            <form:input path="number" /><br>
+            <form:input path="number" />
+            <form:errors path ="number"/><br>
 
             <form:label path="releaseYear">Year:</form:label>
-            <form:input path="releaseYear" /><br>
+            <form:input path="releaseYear" />
+            <form:errors path ="releaseYear"/><br>
 
             <form:label path="publisher">Publisher:</form:label>
-            <form:input path="publisher" /><br>
+            <form:input path="publisher" />
+            <form:errors path ="publisher"/><br>
 
             <form:label path="address">Address:</form:label>
-            <form:input path="address" /><br>
+            <form:input path="address" />
+            <form:errors path ="address"/><br>
 
             <input type="submit" name="Add article"><br>
         </form:form>

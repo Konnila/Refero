@@ -1,11 +1,13 @@
 package ohtu.refero.controllers;
 
 import java.util.List;
+import javax.validation.Valid;
 import ohtu.refero.models.Article;
 import ohtu.refero.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,9 +25,9 @@ public class ArticleController {
     }
     
     @RequestMapping(value="article", method= RequestMethod.POST)
-    public String dealWithForm(@ModelAttribute("articleForm") Article article) {
-        if (article == null)
-            return "redirect:/article";
+    public String dealWithForm(@Valid @ModelAttribute("articleForm") Article article, BindingResult result) {
+        if (result.hasErrors())
+            return "new_article";
         articleServ.addArticle(article);
         return "redirect:/";
     }
