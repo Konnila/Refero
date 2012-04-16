@@ -36,7 +36,7 @@ public class ArticleServiceTest {
     
     @Test
     public void addingNullReturnsNull() {
-        assertEquals(new Article(), a.addArticle(null));
+        assertEquals(null, a.addArticle(null));
     }
     
     @Test
