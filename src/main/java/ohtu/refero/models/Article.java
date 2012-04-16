@@ -1,13 +1,16 @@
 package ohtu.refero.models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Article extends JPAObject {
 
-    private String author, title, journal;
-    private int volume, number, releaseYear;
+    private String author, title, journal, publisher, address;
+    private Integer volume, number, releaseYear;
 
+
+    
     public String getAuthor() {
         return author;
     }
@@ -24,11 +27,11 @@ public class Article extends JPAObject {
         this.journal = journal;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
@@ -40,20 +43,36 @@ public class Article extends JPAObject {
         this.title = title;
     }
 
-    public int getVolume() {
+    public Integer getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
-    public int getReleaseYear() {
+    public Integer getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
+    }
+    
+    public String getPublisher() {
+        return publisher;
+    }
+    
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override

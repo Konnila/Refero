@@ -19,12 +19,15 @@
         
         <c:forEach var="object" items="${list}">
             <pre>
+                Id: ${object.id}
                 Author: ${object.author}
                 Title: ${object.title}
                 Journal: ${object.journal}
                 Volume: ${object.volume}
                 Number: ${object.number}
                 Year: ${object.releaseYear}
+                Publisher: ${object.publisher}
+                Address: ${object.address}
             </pre>
         </c:forEach>
 

@@ -1,3 +1,4 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,33 +10,40 @@
         <h1>Refero</h1>
 
         <h2>Navigation</h2>
-        
+
         <ul>
             <li><a href="/">All articles</a></li>
         </ul>
-        
+
         <h2>Let's add an article!</h2>
-        <form method="post" action="article">
-            
-            <label>Author:</label>
-            <input type="text" name="author"><br>    
-            
-            <label>Title:</label>
-            <input type="text" name="title"><br>
-            
-            <label>Journal:</label>
-            <input type="text" name="journal"><br>
-            
-            <label>Volume:</label>
-            <input type="text" name="volume"><br>
-            
-            <label>Number:</label>
-            <input type="text" name="number"><br>
-            
-            <label>Year:</label>
-            <input type="text" name="releaseYear"><br>
-            
+
+        <form:form method="POST" commandName="articleForm" action="article">
+
+            <form:label path="author">Author:</form:label>
+            <form:input path="author" /><br>    
+
+            <form:label path="title">Title:</form:label>
+            <form:input path="title" /><br>
+
+            <form:label path="journal">Journal:</form:label>
+            <form:input path="journal" /><br>
+
+            <form:label path="volume">Volume:</form:label>
+            <form:input path="volume" /><br>
+
+            <form:label path="number">Number:</form:label>
+            <form:input path="number" /><br>
+
+            <form:label path="releaseYear">Year:</form:label>
+            <form:input path="releaseYear" /><br>
+
+            <form:label path="publisher">Publisher:</form:label>
+            <form:input path="publisher" /><br>
+
+            <form:label path="address">Address:</form:label>
+            <form:input path="address" /><br>
+
             <input type="submit" name="Add article"><br>
-        </form>
+        </form:form>
     </body>
 </html>

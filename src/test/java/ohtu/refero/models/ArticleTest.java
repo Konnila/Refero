@@ -34,9 +34,9 @@ public class ArticleTest {
         assertEquals(a.getAuthor(), "author");
         assertEquals(a.getTitle(), "t");
         assertEquals(a.getJournal(), "j");       
-        assertEquals(a.getNumber(), 254);       
-        assertEquals(a.getReleaseYear(), 1999);       
-        assertEquals(a.getVolume(), 2);     
+        assertEquals(a.getNumber(), new Integer(254));       
+        assertEquals(a.getReleaseYear(), new Integer(1999));       
+        assertEquals(a.getVolume(), new Integer(2));     
     }
     
     @Test

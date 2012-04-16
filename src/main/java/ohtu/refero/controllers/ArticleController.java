@@ -17,12 +17,13 @@ public class ArticleController {
     
     
     @RequestMapping(value="article", method= RequestMethod.GET)
-    public String directToForm() {
+    public String directToForm(Model model) {
+        model.addAttribute("articleForm", new Article());
         return "new_article";
     }
     
     @RequestMapping(value="article", method= RequestMethod.POST)
-    public String dealWithForm(@ModelAttribute Article article) {
+    public String dealWithForm(@ModelAttribute("articleForm") Article article) {
         if (article == null)
             return "redirect:/article";
         articleServ.addArticle(article);
