@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.*;
 public class Article extends JPAObject {
 
     @NotBlank(message="Author can't be empty.")
-    private long author;
+    private String author;
     @NotBlank(message="Title can't be empty.")
     private String title;
     @NotBlank(message="Journal can't be empty.")
