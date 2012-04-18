@@ -1,6 +1,5 @@
 package ohtu.refero.controllers;
 
-import java.util.List;
 import javax.validation.Valid;
 import ohtu.refero.models.Article;
 import ohtu.refero.service.ArticleService;

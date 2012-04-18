@@ -2,11 +2,12 @@ package ohtu.refero.models;
 
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
+import ohtu.refero.bibtex.BibTeXProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
 @MappedSuperclass
 public abstract class Reference extends JPAObject {
-
+    
     @NotBlank(message="Author can't be empty.")
     private String author;
     
@@ -14,11 +15,21 @@ public abstract class Reference extends JPAObject {
     private String title;
     
     @NotNull(message="Year can't be empty.")
+    @BibTeXProperty(name = "year")
     private Integer releaseYear;
     
     private String publisher;
+    
     private String address;
-
+    
+    public Long getReferenceId() {
+        return this.getId();
+    }
+    
+    public void setReferenceId(Long referenceId) {
+        this.setId(referenceId);
+    }
+    
     public String getAddress() {
         return address;
     }
