@@ -41,8 +41,8 @@ public class ArticleServiceTest {
     
     @Test
     public void addAndfindArticleTest() {
-        a.save(b);
-        assertEquals(a.findById(b.getId()), b);
+        Article article = a.save(b);
+        assertEquals(a.findById(article.getId()), article);
     }
     
 //    @Test

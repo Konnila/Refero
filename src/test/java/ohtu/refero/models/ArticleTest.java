@@ -12,6 +12,7 @@ public class ArticleTest {
     
     @Before
     public void initialize() {
+        
         a = new Article();
         a.setAuthor("author");
         a.setTitle("t");
@@ -31,6 +32,7 @@ public class ArticleTest {
     
     @Test
     public void gettersAndSetters() {
+        
         assertEquals(a.getAuthor(), "author");
         assertEquals(a.getTitle(), "t");
         assertEquals(a.getJournal(), "j");       
@@ -41,6 +43,7 @@ public class ArticleTest {
     
     @Test
     public void equalsIsValid() {
+        
         Article b = new Article();
         b.setId(a.getId());
         assertEquals(b.equals(a), true);    
