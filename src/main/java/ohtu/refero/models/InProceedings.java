@@ -4,36 +4,18 @@ import javax.persistence.Entity;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class Article extends Reference {
+public class InProceedings extends Reference {
 
-    @NotBlank(message = "Journal can't be empty.")
-    private String journal;
-    private Integer volume;
-    private Integer number;
+    @NotBlank(message="Book Title can't be empty.")
+    private String bookTitle;
     private String pages;
 
-    public String getJournal() {
-        return journal;
+    public String getBookTitle() {
+        return bookTitle;
     }
 
-    public void setJournal(String journal) {
-        this.journal = journal;
-    }
-
-    public Integer getVolume() {
-        return volume;
-    }
-
-    public void setVolume(Integer volume) {
-        this.volume = volume;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
     }
 
     public String getPages() {
