@@ -7,19 +7,18 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @MappedSuperclass
 public abstract class Reference extends JPAObject {
-    
-    @NotBlank(message="Author can't be empty.")
+
+    @NotBlank(message = "Author can't be empty.")
     private String author;
     
-    @NotBlank(message="Title can't be empty.")
+    @NotBlank(message = "Title can't be empty.")
     private String title;
-    
-    @NotNull(message="Year can't be empty.")
+
     @BibTeXProperty(name = "year")
+    @NotNull(message = "Year can't be empty.")
     private Integer releaseYear;
     
     private String publisher;
-    
     private String address;
     
     public Long getReferenceId() {
@@ -30,14 +29,6 @@ public abstract class Reference extends JPAObject {
         this.setId(referenceId);
     }
     
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -46,12 +37,12 @@ public abstract class Reference extends JPAObject {
         this.author = author;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Integer getReleaseYear() {
@@ -62,11 +53,19 @@ public abstract class Reference extends JPAObject {
         this.releaseYear = releaseYear;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
