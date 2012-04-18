@@ -36,13 +36,13 @@ public class ArticleServiceTest {
     
     @Test
     public void addingNullReturnsNull() {
-        assertEquals(null, a.addArticle(null));
+        assertEquals(null, a.save(null));
     }
     
     @Test
     public void addAndfindArticleTest() {
-        a.addArticle(b);
-        assertEquals(a.getArticleById(b.getId()), b);
+        a.save(b);
+        assertEquals(a.findById(b.getId()), b);
     }
     
 //    @Test

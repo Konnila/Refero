@@ -4,7 +4,8 @@ import java.util.List;
 import ohtu.refero.models.Article;
 
 public interface ArticleService {
-    Article addArticle(Article article);
-    List<Article> getArticles();
-    Article getArticleById(Long id);
+    
+    public Article save(Article article);
+    public List<Article> findAll();
+    public Article findById(Long id);
 }

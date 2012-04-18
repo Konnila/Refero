@@ -11,26 +11,28 @@ import org.springframework.transaction.annotation.Transactional;
 public class ArticleServiceImplementation implements ArticleService {
 
     @Autowired
-    ArticleRepository articleRepo;
+    ArticleRepository articleRepository;
 
     @Transactional
     @Override
-    public Article addArticle(Article article) {
-        if (article != null) {
-            articleRepo.save(article);
-            return article;
+    public Article save(Article article) {
+        
+        if (article == null) {
+            return null;
         }
-        else return null;
-
+        
+        article = articleRepository.save(article);
+        
+        return article;
     }
 
     @Override
-    public List<Article> getArticles() {
-        return articleRepo.findAll();
+    public List<Article> findAll() {
+        return articleRepository.findAll();
     }
     
     @Override
-    public Article getArticleById(Long id) {
-        return articleRepo.findById(id);
+    public Article findById(Long id) {
+        return articleRepository.findById(id);
     }
 }

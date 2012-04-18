@@ -14,25 +14,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ArticleController {
-    @Autowired
-    ArticleService articleServ;
     
+    @Autowired
+    ArticleService articleService;
     
     @RequestMapping(value="article", method= RequestMethod.GET)
-    public String directToForm(Model model) {
+    public String directToForm(Model model) {   
         model.addAttribute("articleForm", new Article());
         return "new_article";
     }
     
     @RequestMapping(value="article", method= RequestMethod.POST)
-    public String dealWithForm(@Valid @ModelAttribute("articleForm") Article article, BindingResult result) {
+    public String dealWithForm(@Valid @ModelAttribute("articleForm") Article article, BindingResult result) {    
         if (result.hasErrors())
             return "new_article";
-        articleServ.addArticle(article);
+        
+        articleService.save(article);
         return "redirect:/";
     }
-    
-
-    
-
 }

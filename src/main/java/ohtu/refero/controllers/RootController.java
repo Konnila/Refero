@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RootController {
+    
     @Autowired
-    ArticleService articleServ;
+    ArticleService articleService;
     
     @RequestMapping("/")
     public String root(Model model) {
-        List<Article> articles = articleServ.getArticles();
+        List<Article> articles = articleService.findAll();
         model.addAttribute("list", articles);
         return "index";
     }
