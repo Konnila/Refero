@@ -33,6 +33,6 @@ public class BookServiceImplementation implements BookService {
     
     @Override
     public Book findById(Long id) {
-        return bookRepository.findById(id);
+        return bookRepository.findOne(id);
     }
 }

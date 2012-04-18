@@ -1,38 +1,38 @@
 package ohtu.refero.service;
 
 import java.util.List;
-import ohtu.refero.models.InProceedings;
-import ohtu.refero.repositories.InProceedingsRepository;
+import ohtu.refero.models.Inproceedings;
+import ohtu.refero.repositories.InproceedingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class InProceedingsServiceImplementation implements InProceedingsService {
+public class InproceedingsServiceImplementation implements InproceedingsService {
 
     @Autowired
-    InProceedingsRepository inProceedingsRepository;
+    InproceedingsRepository inproceedingsRepository;
 
     @Transactional
     @Override
-    public InProceedings save(InProceedings inProceedings) {
+    public Inproceedings save(Inproceedings inProceedings) {
         
         if (inProceedings == null) {
             return null;
         }
         
-        inProceedings = inProceedingsRepository.save(inProceedings);
+        inProceedings = inproceedingsRepository.save(inProceedings);
         
         return inProceedings;
     }
 
     @Override
-    public List<InProceedings> findAll() {
-        return inProceedingsRepository.findAll();
+    public List<Inproceedings> findAll() {
+        return inproceedingsRepository.findAll();
     }
     
     @Override
-    public InProceedings findById(Long id) {
-        return inProceedingsRepository.findById(id);
+    public Inproceedings findById(Long id) {
+        return inproceedingsRepository.findOne(id);
     }
 }

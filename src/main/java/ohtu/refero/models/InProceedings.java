@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class InProceedings extends Reference {
+public class Inproceedings extends Reference {
 
     @NotBlank(message="Book Title can't be empty.")
     private String bookTitle;

@@ -1,11 +1,11 @@
 package ohtu.refero.service;
 
 import java.util.List;
-import ohtu.refero.models.InProceedings;
+import ohtu.refero.models.Inproceedings;
 
-public interface InProceedingsService {
+public interface InproceedingsService {
     
-    public InProceedings save(InProceedings inProceedings);
-    public List<InProceedings> findAll();
-    public InProceedings findById(Long id);
+    public Inproceedings save(Inproceedings inProceedings);
+    public List<Inproceedings> findAll();
+    public Inproceedings findById(Long id);
 }

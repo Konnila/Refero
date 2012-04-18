@@ -1,8 +1,8 @@
 package ohtu.refero.repositories;
 
-import ohtu.refero.models.InProceedings;
+import ohtu.refero.models.Inproceedings;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface InProceedingsRepository extends JpaRepository<InProceedings, Long> {
-    InProceedings findById(Long id);
+public interface InproceedingsRepository extends JpaRepository<Inproceedings, Long> {
+
 }
