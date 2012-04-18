@@ -1,6 +1,7 @@
 package ohtu.refero.models;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -8,7 +9,9 @@ public class Article extends Reference {
 
     @NotBlank(message = "Journal can't be empty.")
     private String journal;
+    @Min(1)
     private Integer volume;
+    @Min(1)
     private Integer number;
     private String pages;
 

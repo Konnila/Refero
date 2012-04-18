@@ -22,6 +22,11 @@
         <property name="suffix" value=".jsp" />
     </bean>
     
+    <!-- Custom messages for Integer validation -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages" />
+    </bean>
+    
     <!-- Database configuration -->
     <import resource="spring-database.xml" />
 </beans>
