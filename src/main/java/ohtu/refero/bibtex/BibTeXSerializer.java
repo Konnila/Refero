@@ -148,7 +148,7 @@ public class BibTeXSerializer {
         }
     }
     
-    private String serializeObject() throws NoIdException {
+    private String serializeObject() {
         
         String className = object.getClass().getSimpleName().toLowerCase();
         
