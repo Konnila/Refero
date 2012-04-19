@@ -5,7 +5,7 @@
 package ohtu.refero.service;
 
 public interface ReferenceGenerator {
-    String generateReferenceId();
+    String generateReferenceId(Object object);
     
     
 }
