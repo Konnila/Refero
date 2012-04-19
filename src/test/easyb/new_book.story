@@ -15,7 +15,7 @@ scenario 'user cant add a new book when missing required fields', {
     }
 
     when 'required fields are not filled', {
-        element = webDriver.findElement(By.linkText("Lähetä")); 
+        element = webDriver.findElement(By.linkText("Add book")); 
         element.submit();
     }
     then 'book will not be added', {

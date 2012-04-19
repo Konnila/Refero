@@ -15,7 +15,7 @@ scenario 'user cant add a new article when missing required fields', {
     }
 
     when 'required fields are not filled', {
-        element = webDriver.findElement(By.linkText("Lähetä")); 
+        element = webDriver.findElement(By.linkText("Add article")); 
         element.submit();
     }
     then 'article will not be added', {
