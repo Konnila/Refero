@@ -6,6 +6,7 @@ package ohtu.refero.service;
 
 public interface ReferenceGenerator {
     String generateReferenceId(Object object);
-    
+    boolean checkIfConflict(String refID);
+    String appendSuffix(String refID);
     
 }

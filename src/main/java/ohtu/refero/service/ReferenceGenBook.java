@@ -20,7 +20,10 @@ public class ReferenceGenBook implements ReferenceGenerator{
         ReferenceGenBook bok = new ReferenceGenBook();
         Book book = new Book();
         book.setAuthor("Jasper");
-        bok.generateReferenceId(book);
+        book.setReleaseYear(2012);
+        System.out.println(bok.generateReferenceId(book));
+        
+        
     }
     @Override
     public String generateReferenceId(Object object) {
@@ -29,14 +32,29 @@ public class ReferenceGenBook implements ReferenceGenerator{
         } catch(Exception e){
             System.out.println("Faulty parameter");
         }
+        //append authors surnames first 2 letters
         refID += book.getAuthor().substring(0, 2);
-        System.out.println(refID);
-        return "lol";
+        //append years last two digits
+        String year = book.getReleaseYear()+"";
+        year = year.substring(year.length()-2, year.length());
+        refID += year;
+        
+        return refID;
         
         
         
         
         }
+
+    @Override
+    public boolean checkIfConflict(String refID) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public String appendSuffix(String refID) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
     
         
