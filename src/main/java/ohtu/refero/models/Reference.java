@@ -70,7 +70,7 @@ public abstract class Reference extends JPAObject {
             return false;
         }
 
-        Article other = (Article) obj;
+        Reference other = (Reference) obj;
         if (this.getId() == null || other.getId() == null || this.getId() != other.getId()) {
             return false;
         }

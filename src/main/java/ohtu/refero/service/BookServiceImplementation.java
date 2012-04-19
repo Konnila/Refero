@@ -15,8 +15,7 @@ public class BookServiceImplementation implements BookService {
 
     @Transactional
     @Override
-    public Book save(Book book) {
-        
+    public Book save(Book book) {       
         if (book == null) {
             return null;
         }

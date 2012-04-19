@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import ohtu.refero.models.Article;
+import ohtu.refero.models.Book;
 import ohtu.refero.repositories.ArticleRepository;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -15,37 +16,36 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-context.xml",
     "file:src/main/webapp/WEB-INF/spring-database.xml"})
-public class ArticleServiceTest {
+public class BookServiceTest {
 
     @Autowired
-    ArticleService articleRepo;
-    Article testArticle;
+    BookService bookRepo;
+    Book testBook;
 
     @Before
     public void initialize() {
-        testArticle = new Article();
-        testArticle.setAuthor("author");
-        testArticle.setTitle("t");
-        testArticle.setJournal("j");
-        testArticle.setNumber(254);
-        testArticle.setReleaseYear(1999);
-        testArticle.setVolume(2);
-        testArticle.setId(Long.MIN_VALUE);
+        testBook = new Book();
+        testBook.setAuthor("author");
+        testBook.setTitle("t");
+        testBook.setPublisher("Luke");
+        testBook.setReleaseYear(1999);
+        testBook.setAddress("kuNpula");
+        testBook.setId(Long.MAX_VALUE);
     }
 
     @Test
     public void addingNullReturnsNull() {
-        assertEquals(null, articleRepo.save(null));
+        assertEquals(null, bookRepo.save(null));
     }
 
     @Test
-    public void addAndfindArticleTest() {
-        Article article = articleRepo.save(testArticle);
-        assertEquals(articleRepo.findById(article.getId()), article);
+    public void addAndfindBookTest() {
+        Book book = bookRepo.save(testBook);
+        assertEquals(bookRepo.findById(book.getId()), book);
     }
 
     @Test
-    public void findAllArticles() {
-        assertTrue(articleRepo.findAll() != null);
+    public void findAllBooks() {
+        assertTrue(bookRepo.findAll() != null);
     }
 }
