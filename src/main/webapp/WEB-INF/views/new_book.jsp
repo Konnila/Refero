@@ -44,7 +44,7 @@
             <form:input path="address" />
             <form:errors path ="address"/><br>
 
-            <input type="submit" name="Add article"><br>
+            <input type="submit" value="Add book"><br>
         </form:form>
     </body>
 </html>

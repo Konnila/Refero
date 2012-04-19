@@ -4,39 +4,39 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
-description 'User can add an valid article'
+description 'User can add a valid book'
 
-scenario 'user cant add a new article when missing required fields', {
-    given 'command add new article selected', {
+scenario 'user cant add a new book when missing required fields', {
+    given 'command add new a book selected', {
         webDriver = new HtmlUnitDriver();
         webDriver.get("http://localhost:9090");
-        element = webDriver.findElement(By.linkText("Add article"));       
+        element = webDriver.findElement(By.linkText("Add book"));       
         element.click();
     }
 
-    when 'required fields are not filled', { 
-        webDriver.get("http://localhost:9090/article");
+    when 'required fields are not filled', {;
+        webDriver.get("http://localhost:9090/book");
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)
 
         element.sendKeys("Captain Hadoque")
         element.submit();
     }
-    then 'article will not be added', {
+    then 'book will not be added', {
         webDriver.getPageSource().contains("cant be empty").shouldBe true
     }
 }
 
-scenario 'user can add an article with a valid information', {
+scenario 'user can add an book with a valid information', {
 
-    given 'command add article selected', {
+    given 'command add a book selected', {
         webDriver = new HtmlUnitDriver();
         webDriver.get("http://localhost:9090");
-        element = webDriver.findElement(By.linkText("Add article"));       
+        element = webDriver.findElement(By.linkText("Add book"));       
         element.click();
     }
 
-    when 'valid information is entered', {              
+    when 'valid information is entered', {   
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)
 
@@ -47,30 +47,21 @@ scenario 'user can add an article with a valid information', {
 
         element.sendKeys("Adventures of Captain Hadoque")
 
-        element = webDriver.findElement(By.name("journal"))
-        assertNotNull(element)
-
-        element.sendKeys("The Mighty Sea Adventures")
-
-        element = webDriver.findElement(By.name("volume"))
-        assertNotNull(element)
-
-        element.sendKeys("2")
-
-        element = webDriver.findElement(By.name("number"))
-        assertNotNull(element)
-
-        element.sendKeys("10")
 
         element = webDriver.findElement(By.name("releaseYear"))
         assertNotNull(element)
 
         element.sendKeys("2012")
 
+        element = webDriver.findElement(By.name("publisher"))
+        assertNotNull(element)
+
+        element.sendKeys("KONNILAE")
+
         element.submit()
     }
 
-    then 'article will be added', {     
+    then 'the book will be added', {       
         webDriver.getPageSource().contains("Adventures of Captain Hadoque")
     }
 }
