@@ -84,6 +84,14 @@ public class BibTeXSerializer {
             return false;
         }
         
+        if (value instanceof String) {
+            
+            // Don't write empty strings
+            if (((String) value).isEmpty()) {
+                return false;
+            }
+        }
+        
         return true;
     }
     
@@ -119,6 +127,18 @@ public class BibTeXSerializer {
         }
     }
     
+    private String convertSpecialCharacters(String string) {
+        
+        string = string.replaceAll("Ä", "\\\\\"{A}");
+        string = string.replaceAll("Ö", "\\\\\"{O}");
+        string = string.replaceAll("Å", "\\\\AA");
+        string = string.replaceAll("ä", "\\\\\"{a}");
+        string = string.replaceAll("ö", "\\\\\"{o}");
+        string = string.replaceAll("å", "\\\\aa");
+        
+        return string;
+    }
+    
     private void serializeFields() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         
         Iterator<String> current = gettersForFieldsToSerialize.keySet().iterator();
@@ -129,6 +149,11 @@ public class BibTeXSerializer {
             
             Method method = gettersForFieldsToSerialize.get(fieldName);
             Object value = method.invoke(object);
+            
+            // If string, convert special characters
+            if (value instanceof String) {
+                value = convertSpecialCharacters((String) value);
+            }
             
             // Different field name for serialization
             if (fieldsWithProperties.containsKey(fieldName)) {
