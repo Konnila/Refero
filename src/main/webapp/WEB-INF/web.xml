@@ -43,6 +43,14 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     
+    <!-- Workaround to make Heroku to find JSTL -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+            <taglib-location>/WEB-INF/c.tld</taglib-location>
+    </taglib>
+    </jsp-config>
+    
     <session-config>
         <session-timeout>
             30
