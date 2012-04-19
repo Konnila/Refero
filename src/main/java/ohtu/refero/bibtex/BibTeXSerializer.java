@@ -8,10 +8,11 @@ import java.util.*;
 public class BibTeXSerializer {
 
     private Object object;
-    private String fieldNameForId;
+    private Field fieldForId;
+    private Method getterForId;
     private List<String> fieldNamesToExclude;
     private Map<String, BibTeXProperty> fieldsWithProperties;
-    private Map<String, Method> getters;
+    private Map<String, Method> gettersForFieldsToSerialize;
     
     private BibTeXGenerator generator;
     
@@ -20,24 +21,24 @@ public class BibTeXSerializer {
         this.object = object;
         generator = new BibTeXGenerator();
         
-        getFieldNameForId();
+        getFieldForId();
         getFieldNamesToExclude();
         getFieldsWithProperties();
-        getGetters();
+        getGettersForFieldsToSerialize();
     }
     
-    private void getFieldNameForId() throws NoIdException {
+    private void getFieldForId() throws NoIdException {
         
-        fieldNameForId = null;
-        
+        fieldForId = null;
+            
         for (Field field : Fields.getAllDeclaredFields(object.getClass())) {
             
             if (field.getAnnotation(BibTeXId.class) != null) {
-                fieldNameForId = field.getName();
+                fieldForId = field;
             }
         }
         
-        if (fieldNameForId == null) {
+        if (fieldForId == null) {
             throw new NoIdException("The class hierarchy doesn't seem to have a required @BibTeXId annotation.");
         }
     }
@@ -54,7 +55,7 @@ public class BibTeXSerializer {
         }
         
         // Exclude @BibTexId
-        fieldNamesToExclude.add(fieldNameForId);
+        fieldNamesToExclude.add(fieldForId.getName().toLowerCase());
     }
     
     private void getFieldsWithProperties() {
@@ -68,10 +69,27 @@ public class BibTeXSerializer {
             }
         }
     }
-    
-    private void getGetters() {
+   
+    private boolean shouldWriteField(String fieldName, Method method) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         
-        getters = new TreeMap<String, Method>();
+        // Exclude
+        if (fieldNamesToExclude.contains(fieldName)) {
+            return false;
+        }
+        
+        Object value = method.invoke(object);
+        
+        // Don't write null objects
+        if (value == null) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private void getGettersForFieldsToSerialize() {
+        
+        gettersForFieldsToSerialize = new TreeMap<String, Method>();
         
         for (Method method : object.getClass().getMethods()) {
         
@@ -83,48 +101,33 @@ public class BibTeXSerializer {
                 }
                 
                 String fieldName = method.getName().replace("get", "").toLowerCase();
-                getters.put(fieldName, method);
+                
+                // Getter for ID
+                if (fieldName.equals(fieldForId.getName().toLowerCase())) {
+                    getterForId = method;
+                }
+                
+                try {
+                    if (shouldWriteField(fieldName, method)) {
+                        gettersForFieldsToSerialize.put(fieldName, method);
+                    }
+                } catch (Exception exception) {
+                    System.out.println("BibTeXSerializer failed miserably.");
+                    exception.printStackTrace();
+                }
             }
         }
     }
     
-    private boolean shouldWriteField(String fieldName) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        
-        // Exclude
-        if (fieldNamesToExclude.contains(fieldName)) {
-            return false;
-        }
-        
-        Method method = getters.get(fieldName);
-        Object value = method.invoke(object);
-        
-        // Don't write null objects
-        if (value == null) {
-            return false;
-        }
-        
-        return true;
-    }
-    
     private void serializeFields() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         
-        Iterator<String> current = getters.keySet().iterator();
-        Iterator<String> following = getters.keySet().iterator();
-        
-        if (current.hasNext()) {
-            following.next();
-        }
+        Iterator<String> current = gettersForFieldsToSerialize.keySet().iterator();
         
         while (current.hasNext()) {
             
             String fieldName = current.next();
             
-            // Skip
-            if (!shouldWriteField(fieldName)) {
-                continue;
-            }
-            
-            Method method = getters.get(fieldName);
+            Method method = gettersForFieldsToSerialize.get(fieldName);
             Object value = method.invoke(object);
             
             // Different field name for serialization
@@ -134,14 +137,8 @@ public class BibTeXSerializer {
             
             generator.writeObjectField(fieldName, value);
             
-            if (current.hasNext()) {
-                
-                String nextFieldName = following.next();
-                
-                // Write separator only if the next field will be serialized
-                if (shouldWriteField(nextFieldName)) {
-                    generator.writeSeparator();
-                }
+            if (current.hasNext()) {                
+                generator.writeSeparator();
             }
             
             generator.writeNewline();
@@ -156,8 +153,7 @@ public class BibTeXSerializer {
             generator.writeObjectFieldStart(className);
         
             // Id
-            Method method = getters.get(fieldNameForId.toLowerCase());
-            generator.writeObject(method.invoke(object));
+            generator.writeObject(getterForId.invoke(object));
             
             generator.writeSeparator();
             generator.writeNewline();
