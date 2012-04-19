@@ -23,7 +23,7 @@ scenario 'user cant add a new article when missing required fields', {
         element.submit();
     }
     then 'article will not be added', {
-        webDriver.getPageSource().contains("Title can't be empty").shouldBe false
+        webDriver.getPageSource().contains("cant be empty").shouldBe true
     }
 }
 
