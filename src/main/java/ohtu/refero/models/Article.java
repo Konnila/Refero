@@ -15,7 +15,6 @@ public class Article extends Reference {
     private Integer volume;
     @Min(value = 1, message = "Number must be at least 1.")
     private Integer number;
-    @Size(min=0)
     @Pattern(regexp = "\\d+--\\d+|", message = "Insert the pagenumbers in a format like: 1--25")
    
     private String pages;
