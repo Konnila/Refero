@@ -8,9 +8,9 @@ description 'User can add an valid inproceeding'
 
 scenario 'user cant add a new inproceeding when missing required fields', {
     given 'command add new inproceeding selected', {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9090");
-        element = driver.findElement(By.linkText("Add inproceeding"));       
+        webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
+        element = webDriver.findElement(By.linkText("Add inproceeding"));       
         element.click();
     }
 
@@ -18,15 +18,15 @@ scenario 'user cant add a new inproceeding when missing required fields', {
         element.submit();
     }
     then 'inproceeding will not be added', {
-        driver.getPageSource().contains("Author can't be empty").shouldBe true
+        webDriver.getPageSource().contains("Author can't be empty").shouldBe true
     }
 }
 
 scenario 'user can add an inproceeding with a valid information', {
     given 'command add new inproceeding selected', {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9090");
-        element = driver.findElement(By.linkText("Add inproceeding"));       
+        webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
+        element = webDriver.findElement(By.linkText("Add inproceeding"));       
         element.click();
     }
 

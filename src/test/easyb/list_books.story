@@ -9,9 +9,9 @@ description 'User can list all books'
 scenario 'books missing required fields are not added in database', {
     
     given 'command add new book selected', {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9090");
-        element = driver.findElement(By.linkText("Add book"));       
+        webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
+        element = webDriver.findElement(By.linkText("Add book"));       
         element.click();
     }
 
@@ -23,7 +23,7 @@ scenario 'books missing required fields are not added in database', {
 
         element.submit();
 
-        driver.get("http://localhost:9090/book");
+        webDriver.get("http://localhost:9090/book");
 
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)
@@ -49,16 +49,16 @@ scenario 'books missing required fields are not added in database', {
     }
 
     then 'invalid books are not listed', {
-        driver.getPageSource().contains("KIRJATRO").shouldBe false
+        webDriver.getPageSource().contains("KIRJATRO").shouldBe false
     }
 }
 
 scenario 'user can list all books', {
 
     given 'command add book selected', {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9090");
-        element = driver.findElement(By.linkText("Add book"));       
+        webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
+        element = webDriver.findElement(By.linkText("Add book"));       
         element.click();
     }
 
@@ -85,8 +85,8 @@ scenario 'user can list all books', {
 
         element.submit()
 
-        driver.get("http://localhost:9090");
-        element = driver.findElement(By.linkText("Add book"));       
+        webDriver.get("http://localhost:9090");
+        element = webDriver.findElement(By.linkText("Add book"));       
         element.click();
         
         element = webDriver.findElement(By.name("author"))

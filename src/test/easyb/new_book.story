@@ -8,9 +8,9 @@ description 'User can add a valid book'
 
 scenario 'user cant add a new book when missing required fields', {
     given 'command add new a book selected', {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9090");
-        element = driver.findElement(By.linkText("Add book"));       
+        webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
+        element = webDriver.findElement(By.linkText("Add book"));       
         element.click();
     }
 
@@ -18,16 +18,16 @@ scenario 'user cant add a new book when missing required fields', {
         element.submit();
     }
     then 'book will not be added', {
-        driver.getPageSource().contains("Author can't be empty").shouldBe true
+        webDriver.getPageSource().contains("Author can't be empty").shouldBe true
     }
 }
 
 scenario 'user can add an book with a valid information', {
 
     given 'command add a book selected', {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9090");
-        element = driver.findElement(By.linkText("Add book"));       
+        webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
+        element = webDriver.findElement(By.linkText("Add book"));       
         element.click();
     }
 

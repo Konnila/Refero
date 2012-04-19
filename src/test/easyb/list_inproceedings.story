@@ -15,7 +15,7 @@ scenario 'inproceedings missing required fields are not added in database', {
     }
 
     when 'required fields are not filled', {
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("MASA MATALA")
@@ -24,22 +24,22 @@ scenario 'inproceedings missing required fields are not added in database', {
 
         driver.get("http://localhost:9090/inproceeding");
 
-        element = webDriver.findElement(By.name("author"))
+        element = driver.findElement(By.name("author"))
         assertNotNull(element)
 
         element.sendKeys("Luke")
 
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("Adventures of Captain LUKELUUKKAINEN")
 
-        element = webDriver.findElement(By.name("bookTitle"))
+        element = driver.findElement(By.name("bookTitle"))
         assertNotNull(element)
 
         element.sendKeys("mammamia")
 
-        element = webDriver.findElement(By.name("releaseYear"))
+        element = driver.findElement(By.name("releaseYear"))
         assertNotNull(element)
 
         element.sendKeys("2012")
@@ -61,22 +61,22 @@ scenario 'user can list all added inproceedings', {
     }
 
     when 'valid inproceedings are added', {
-        element = webDriver.findElement(By.name("author"))
+        element = driver.findElement(By.name("author"))
         assertNotNull(element)
 
         element.sendKeys("Captain Hadoque")
 
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("Adventures of Captain Hadoque")
 
-        element = webDriver.findElement(By.name("releaseYear"))
+        element = driver.findElement(By.name("releaseYear"))
         assertNotNull(element)
 
         element.sendKeys("2012")
 
-        element = webDriver.findElement(By.name("bookTitle"))
+        element = driver.findElement(By.name("bookTitle"))
         assertNotNull(element)
 
         element.sendKeys("mammamia")
@@ -87,23 +87,23 @@ scenario 'user can list all added inproceedings', {
         element = driver.findElement(By.linkText("Add inproceeding"));       
         element.click();
         
-        element = webDriver.findElement(By.name("author"))
+        element = driver.findElement(By.name("author"))
         assertNotNull(element)
 
         element.sendKeys("Tintin")
 
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("Adventures of Tintin")
 
 
-        element = webDriver.findElement(By.name("releaseYear"))
+        element = driver.findElement(By.name("releaseYear"))
         assertNotNull(element)
 
         element.sendKeys("2011")
 
-        element = webDriver.findElement(By.name("bookTitle"))
+        element = driver.findElement(By.name("bookTitle"))
         assertNotNull(element)
 
         element.sendKeys("JammaTia")
@@ -112,7 +112,7 @@ scenario 'user can list all added inproceedings', {
     }
 
     then 'all valid inproceedings will be listed', {     
-        webDriver.getPageSource().contains("Adventures of Captain Hadoque")
-        webDriver.getPageSource().contains("The Mighty Adventures of Tintin")
+        driver.getPageSource().contains("Adventures of Captain Hadoque")
+        driver.getPageSource().contains("The Mighty Adventures of Tintin")
     }
 }

@@ -10,7 +10,7 @@ scenario 'user cant add a new article when missing required fields', {
     given 'command add new article selected', {
         addArticleAddress = "http://localhost:9090"
         webDriver = new HtmlUnitDriver();
-        element = driver.findElement(By.linkText("Add article"));       
+        element = webDriver.findElement(By.linkText("Add article"));       
         element.click();
     }
 
@@ -18,7 +18,7 @@ scenario 'user cant add a new article when missing required fields', {
         element.submit();
     }
     then 'article will not be added', {
-        driver.getPageSource().contains("Journal can't be empty").shouldBe true
+        webDriver.getPageSource().contains("Journal can't be empty").shouldBe true
     }
 }
 
@@ -27,7 +27,7 @@ scenario 'user can add an article with a valid information', {
     given 'command add article selected', {
         addArticleAddress = "http://localhost:9090"
         webDriver = new HtmlUnitDriver();
-        element = driver.findElement(By.linkText("Add article"));       
+        element = webDriver.findElement(By.linkText("Add article"));       
         element.click();
     }
 

@@ -16,7 +16,7 @@ scenario 'articles missing required fields are not added in database', {
     }
 
     when 'required fields are not filled', {
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("Harry Potter")
@@ -25,32 +25,32 @@ scenario 'articles missing required fields are not added in database', {
 
         driver.get("http://localhost:9090/article");
 
-        element = webDriver.findElement(By.name("author"))
+        element = driver.findElement(By.name("author"))
         assertNotNull(element)
 
         element.sendKeys("Captain Hadoque")
 
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("Adventures of Captain Hadoque")
 
-        element = webDriver.findElement(By.name("journal"))
+        element = driver.findElement(By.name("journal"))
         assertNotNull(element)
 
         element.sendKeys("The Mighty Sea Adventures")
 
-        element = webDriver.findElement(By.name("volume"))
+        element = driver.findElement(By.name("volume"))
         assertNotNull(element)
 
         element.sendKeys("2")
 
-        element = webDriver.findElement(By.name("number"))
+        element = driver.findElement(By.name("number"))
         assertNotNull(element)
 
         element.sendKeys("10")
 
-        element = webDriver.findElement(By.name("releaseYear"))
+        element = driver.findElement(By.name("releaseYear"))
         assertNotNull(element)
 
         element.sendKeys("2012")
@@ -65,7 +65,7 @@ scenario 'articles missing required fields are not added in database', {
 
 scenario 'user can list all articles', {
 
-    given 'command add new article selected' {
+    given 'command add new article selected', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9090");
         element = driver.findElement(By.linkText("Add article"));       
@@ -74,32 +74,32 @@ scenario 'user can list all articles', {
 
 
     when 'list contains articles', {
-        element = webDriver.findElement(By.name("author"))
+        element = driver.findElement(By.name("author"))
         assertNotNull(element)
 
         element.sendKeys("Captain Hadoque")
 
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("Adventures of Captain Hadoque")
 
-        element = webDriver.findElement(By.name("journal"))
+        element = driver.findElement(By.name("journal"))
         assertNotNull(element)
 
         element.sendKeys("The Mighty Sea Adventures")
 
-        element = webDriver.findElement(By.name("volume"))
+        element = driver.findElement(By.name("volume"))
         assertNotNull(element)
 
         element.sendKeys("2")
 
-        element = webDriver.findElement(By.name("number"))
+        element = driver.findElement(By.name("number"))
         assertNotNull(element)
 
         element.sendKeys("10")
 
-        element = webDriver.findElement(By.name("releaseYear"))
+        element = driver.findElement(By.name("releaseYear"))
         assertNotNull(element)
 
         element.sendKeys("2012")
@@ -108,32 +108,32 @@ scenario 'user can list all articles', {
 
         driver.get("http://localhost:9090/article");
         
-        element = webDriver.findElement(By.name("author"))
+        element = driver.findElement(By.name("author"))
         assertNotNull(element)
 
         element.sendKeys("Tintin")
 
-        element = webDriver.findElement(By.name("title"))
+        element = driver.findElement(By.name("title"))
         assertNotNull(element)
 
         element.sendKeys("Adventures of Tintin")
 
-        element = webDriver.findElement(By.name("journal"))
+        element = driver.findElement(By.name("journal"))
         assertNotNull(element)
 
         element.sendKeys("The Mighty Adventures of Tintin")
 
-        element = webDriver.findElement(By.name("volume"))
+        element = driver.findElement(By.name("volume"))
         assertNotNull(element)
 
         element.sendKeys("1")
 
-        element = webDriver.findElement(By.name("number"))
+        element = driver.findElement(By.name("number"))
         assertNotNull(element)
 
         element.sendKeys("2")
 
-        element = webDriver.findElement(By.name("releaseYear"))
+        element = driver.findElement(By.name("releaseYear"))
         assertNotNull(element)
 
         element.sendKeys("2011")
@@ -143,7 +143,7 @@ scenario 'user can list all articles', {
 
     then 'all articles will be listed', {
         
-        webDriver.getPageSource().contains("Adventures of Captain Hadoque")
-        webDriver.getPageSource().contains("The Mighty Adventures of Tintin")
+        driver.getPageSource().contains("Adventures of Captain Hadoque")
+        driver.getPageSource().contains("The Mighty Adventures of Tintin")
     }
 }
