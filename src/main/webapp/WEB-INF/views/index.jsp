@@ -10,13 +10,15 @@
         <h1>Refero</h1>
 
         <h2>Navigation</h2>
-        
+
         <ul>
             <li><a href="/article">Add article</a></li>
+            <li><a href="/book">Add book</a></li>
+            <li><a href="/inproceeding">Add inproceeding</a></li>
         </ul>
 
         <h2>All article</h2>
-        
+
         <c:forEach var="article" items="${articles}">
             <pre>
                 Author: ${article.author}
@@ -25,6 +27,19 @@
                 <a href="/article/${article.id}">More details</a>
             </pre>
         </c:forEach>
+
+        <h2>All inproceedings</h2>
+        
+        <c:forEach var="inpro" items="${inproceedings}">
+            <pre>
+                Author: ${inpro.author}
+                Title: ${inpro.title}
+                Year: ${inpro.releaseYear}
+                <a href="/inproceeding/${inpro.id}">More details</a>
+            </pre>
+        </c:forEach>
+
+        <h2>All books</h2>
 
     </body>
 </html>
