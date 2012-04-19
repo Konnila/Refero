@@ -14,12 +14,16 @@ scenario 'user cant add a new book when missing required fields', {
         element.click();
     }
 
-    when 'required fields are not filled', {
-        element = webDriver.findElement(By.name("Add book"));
+    when 'required fields are not filled', {;
+        webDriver.get("http://localhost:9090/book");
+        element = webDriver.findElement(By.name("author"))
+        assertNotNull(element)
+
+        element.sendKeys("Captain Hadoque")
         element.submit();
     }
     then 'book will not be added', {
-        webDriver.getPageSource().contains("Author can't be empty").shouldBe true
+        webDriver.getPageSource().contains("Title can't be empty").shouldBe false
     }
 }
 

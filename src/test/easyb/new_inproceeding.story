@@ -15,11 +15,15 @@ scenario 'user cant add a new inproceeding when missing required fields', {
     }
 
     when 'required fields are not filled', {
-        element = webDriver.findElement(By.name("Add inproceeding")); 
+        webDriver.get("http://localhost:9090/inproceeding");
+        element = webDriver.findElement(By.name("author"))
+        assertNotNull(element)
+
+        element.sendKeys("Captain Hadoque")
         element.submit();
     }
     then 'inproceeding will not be added', {
-        webDriver.getPageSource().contains("Author can't be empty").shouldBe true
+        webDriver.getPageSource().contains("Booktitle cannot be empty.").shouldBe true
     }
 }
 

@@ -14,12 +14,16 @@ scenario 'user cant add a new article when missing required fields', {
         element.click();
     }
 
-    when 'required fields are not filled', {
-        element = webDriver.findElement(By.linkText("Add article")); 
+    when 'required fields are not filled', { 
+        webDriver.get("http://localhost:9090/article");
+        element = webDriver.findElement(By.name("author"))
+        assertNotNull(element)
+
+        element.sendKeys("Captain Hadoque")
         element.submit();
     }
     then 'article will not be added', {
-        webDriver.getPageSource().contains("Journal can't be empty").shouldBe true
+        webDriver.getPageSource().contains("Title can't be empty").shouldBe false
     }
 }
 
