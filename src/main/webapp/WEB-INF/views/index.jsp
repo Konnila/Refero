@@ -12,7 +12,7 @@
         <h2>Navigation</h2>
 
         <ul>
-            <li><a href="/article">Add articles</a></li>
+            <li><a href="/article">Add article</a></li>
             <li><a href="/book">Add book</a></li>
             <li><a href="/inproceeding">Add inproceeding</a></li>
         </ul>
