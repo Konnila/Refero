@@ -5,25 +5,18 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Book extends Reference {
-
-    @NotBlank(message="Publisher can't be empty.")
+    
+    @NotBlank(message = "Publisher can't be empty.")
     private String publisher;
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-
-        Article other = (Article) obj;
-        if (this.getId() == null || other.getId() == null || this.getId() != other.getId()) {
-            return false;
-        }
-
-        return true;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
+
+    @Override
+    public String getPublisher() {
+        return publisher;
+    }
+     
 }

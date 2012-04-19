@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="
@@ -155,9 +156,9 @@
         
         <!-- JSTL -->
         <dependency>
-	    <groupId>jstl</groupId>
-	    <artifactId>jstl</artifactId>
-	    <version>1.2</version>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
         
         <!-- Validation -->
@@ -213,7 +214,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+            
         <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -221,6 +222,14 @@
             <version>2.20.0</version> 
             <scope>test</scope>
         </dependency>
+        
+         <!-- Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+        </dependency>        
     </dependencies>
     
     <repositories>
@@ -231,7 +240,7 @@
     </repositories>
 
     <!-- Workaround for Maven to honour -DskipTests=true which Heroku utilizes -->
-     <profiles>
+    <profiles>
         <profile>
             <id>easyb</id>
             <activation>
@@ -244,21 +253,21 @@
                     
                     <!-- easyb -->
                     <plugin>
-                    <groupId>org.easyb</groupId>
-                    <artifactId>maven-easyb-plugin</artifactId>
-                    <version>1.4</version>
-                    <executions>
-                        <execution>
-                            <phase>integration-test</phase>
-                            <goals>
-                                <goal>test</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <storyType>html</storyType>
-                        <storyReport>${basedir}/target/easyb/easyb-report.html</storyReport>
-                    </configuration>
+                        <groupId>org.easyb</groupId>
+                        <artifactId>maven-easyb-plugin</artifactId>
+                        <version>1.4</version>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <storyType>html</storyType>
+                            <storyReport>${basedir}/target/easyb/easyb-report.html</storyReport>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -276,8 +285,8 @@
                 <configuration>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                        <port>9090</port>
-                        <maxIdleTime>60000</maxIdleTime>
+                            <port>9090</port>
+                            <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
                     <reload>automatic</reload>

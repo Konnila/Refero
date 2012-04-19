@@ -8,24 +8,23 @@ import static org.junit.Assert.assertFalse;
 
 public class ArticleTest {
  
-    Article a;
+    Article testArticle;
     
     @Before
-    public void initialize() {
-        
-        a = new Article();
-        a.setAuthor("author");
-        a.setTitle("t");
-        a.setJournal("j");
-        a.setNumber(254);
-        a.setReleaseYear(1999);
-        a.setVolume(2);
-        a.setId(Long.MIN_VALUE);
+    public void initialize() {   
+        testArticle = new Article();
+        testArticle.setAuthor("author");
+        testArticle.setTitle("t");
+        testArticle.setJournal("j");
+        testArticle.setNumber(254);
+        testArticle.setReleaseYear(1999);
+        testArticle.setVolume(2);
+        testArticle.setPages("1-15");
+        testArticle.setId(Long.MIN_VALUE);
     }
     
     @Test
-    public void isNew() {
-        
+    public void isNew() {    
         Article article = new Article();
         assertTrue(article.isNew());
     }
@@ -33,30 +32,12 @@ public class ArticleTest {
     @Test
     public void gettersAndSetters() {
         
-        assertEquals(a.getAuthor(), "author");
-        assertEquals(a.getTitle(), "t");
-        assertEquals(a.getJournal(), "j");       
-        assertEquals(a.getNumber(), new Integer(254));       
-        assertEquals(a.getReleaseYear(), new Integer(1999));       
-        assertEquals(a.getVolume(), new Integer(2));     
-    }
-    
-    @Test
-    public void equalsIsValid() {
-        
-        Article b = new Article();
-        b.setId(a.getId());
-        assertEquals(b.equals(a), true);    
-        assertEquals(b.equals(null), false);
-        assertEquals(b.equals(new ArticleTest()), false);
-       
-        b.setId(Long.MAX_VALUE);      
-        assertEquals(b.equals(a), false);
-        b.setId(null);
-        assertEquals(b.equals(a), false);
-        
-        a.setId(null);
-        assertFalse(a.equals(b));
-    }
-    
+        assertEquals(testArticle.getAuthor(), "author");
+        assertEquals(testArticle.getTitle(), "t");
+        assertEquals(testArticle.getJournal(), "j");
+        assertEquals(testArticle.getPages(), "1-15");
+        assertEquals(testArticle.getNumber(), new Integer(254));       
+        assertEquals(testArticle.getReleaseYear(), new Integer(1999));       
+        assertEquals(testArticle.getVolume(), new Integer(2));     
+    }   
 }

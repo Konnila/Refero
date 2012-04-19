@@ -2,6 +2,7 @@ package ohtu.refero.models;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -9,12 +10,11 @@ public class Article extends Reference {
 
     @NotBlank(message = "Journal can't be empty.")
     private String journal;
-    
     @Min(value = 1, message = "Volume must be at least 1.")
     private Integer volume;
-    
     @Min(value = 1, message = "Number must be at least 1.")
     private Integer number;
+    @Pattern(regexp = "\\d+--\\d+", message = "Insert the pagenumbers in a format like: 1-25")
     private String pages;
 
     public String getJournal() {
@@ -47,23 +47,5 @@ public class Article extends Reference {
 
     public void setPages(String pages) {
         this.pages = pages;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-
-        Article other = (Article) obj;
-        if (this.getId() == null || other.getId() == null || this.getId() != other.getId()) {
-            return false;
-        }
-
-        return true;
     }
 }

@@ -16,10 +16,17 @@ public abstract class Reference extends JPAObject {
 
     @BibTeXProperty(name = "year")
     @NotNull(message = "Year can't be empty.")
-    private Integer releaseYear;
-    
+    private Integer releaseYear; 
     private String publisher;
     private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
     
     public String getAuthor() {
         return author;
@@ -52,12 +59,22 @@ public abstract class Reference extends JPAObject {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
 
-    public String getAddress() {
-        return address;
-    }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
 
-    public void setAddress(String address) {
-        this.address = address;
+        Article other = (Article) obj;
+        if (this.getId() == null || other.getId() == null || this.getId() != other.getId()) {
+            return false;
+        }
+
+        return true;
     }
 }

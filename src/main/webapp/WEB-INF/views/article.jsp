@@ -24,6 +24,7 @@
             Journal: ${article.journal}
             Volume: ${article.volume}
             Number: ${article.number}
+            Pages: ${article.pages}
             Year: ${article.releaseYear}
             Publisher: ${article.publisher}
             Address: ${article.address}

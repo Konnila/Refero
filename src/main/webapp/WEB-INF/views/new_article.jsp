@@ -38,6 +38,10 @@
             <form:label path="number">Number:</form:label>
             <form:input path="number" />
             <form:errors path ="number"/><br>
+            
+            <form:label path="pages">Pages:</form:label>
+            <form:input path="pages" />
+            <form:errors path ="pages"/><br>
 
             <form:label path="releaseYear">Year:</form:label>
             <form:input path="releaseYear" />
