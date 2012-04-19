@@ -20,15 +20,17 @@ public abstract class Reference extends JPAObject {
     private String publisher;
     private String address;
     
-//    private String referenceID;
+    private String referenceId;
 
-//    public String getReferenceID() {
-//        return referenceID;
-//    }
-//
-//    public void setReferenceID(String referenceID) {
-//        this.referenceID = referenceID;
-//    }
+    public String getReferenceId() {
+        return referenceId;
+    }
+
+    public void setReferenceId(String referenceId) {
+        this.referenceId = referenceId;
+    }
+
+  
 
     public String getAddress() {
         return address;
