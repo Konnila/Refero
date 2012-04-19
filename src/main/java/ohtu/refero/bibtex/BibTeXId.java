@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface BibTeXProperty {
-    
-    public String name();
+public @interface BibTeXId {
+
 }

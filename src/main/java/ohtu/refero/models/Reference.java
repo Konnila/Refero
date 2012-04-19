@@ -21,14 +21,6 @@ public abstract class Reference extends JPAObject {
     private String publisher;
     private String address;
     
-    public Long getReferenceId() {
-        return this.getId();
-    }
-    
-    public void setReferenceId(Long referenceId) {
-        this.setId(referenceId);
-    }
-    
     public String getAuthor() {
         return author;
     }
