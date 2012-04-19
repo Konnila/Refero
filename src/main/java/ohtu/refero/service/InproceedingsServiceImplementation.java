@@ -15,8 +15,7 @@ public class InproceedingsServiceImplementation implements InproceedingsService 
 
     @Transactional
     @Override
-    public Inproceedings save(Inproceedings inProceedings) {
-        
+    public Inproceedings save(Inproceedings inProceedings) {       
         if (inProceedings == null) {
             return null;
         }

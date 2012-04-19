@@ -1,11 +1,6 @@
 package ohtu.refero.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import ohtu.refero.models.Article;
 import ohtu.refero.models.Book;
-import ohtu.refero.repositories.ArticleRepository;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;

@@ -9,7 +9,7 @@ public class Inproceedings extends Reference {
 
     @NotBlank(message="Booktitle cannot be empty.")
     private String bookTitle;
-    @Pattern(regexp = "\\d+--\\d+", message = "Insert the pagenumbers in a format like: 1-25")
+    @Pattern(regexp = "\\d+--\\d+", message = "Insert the pagenumbers in a format like: 1--25")
     private String pages;
 
     public void setPages(String pages) {
