@@ -7,7 +7,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 description 'User can add a valid book'
 
 scenario 'user cant add a new book when missing required fields', {
-    given 'command add new a book selected' {
+    given 'command add new a book selected', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9090");
         element = driver.findElement(By.linkText("Add book"));       

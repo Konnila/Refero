@@ -7,7 +7,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 description 'User can add an valid inproceeding'
 
 scenario 'user cant add a new inproceeding when missing required fields', {
-    given 'command add new inproceeding selected' {
+    given 'command add new inproceeding selected', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9090");
         element = driver.findElement(By.linkText("Add inproceeding"));       
@@ -23,7 +23,7 @@ scenario 'user cant add a new inproceeding when missing required fields', {
 }
 
 scenario 'user can add an inproceeding with a valid information', {
-    given 'command add new inproceeding selected' {
+    given 'command add new inproceeding selected', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9090");
         element = driver.findElement(By.linkText("Add inproceeding"));       

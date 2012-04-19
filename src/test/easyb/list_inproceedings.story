@@ -7,7 +7,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 description 'User can list all inproceedings'
 
 scenario 'inproceedings missing required fields are not added in database' {    
-    given 'command add new inproceeding selected' {
+    given 'command add new inproceeding selected', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9090");
         element = driver.findElement(By.linkText("Add inproceeding"));       

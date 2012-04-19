@@ -8,7 +8,7 @@ description 'User can list all articles'
 
 scenario 'articles missing required fields are not added in database' {
     
-    given 'command add new article selected' {
+    given 'command add new article selected', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9090");
         element = driver.findElement(By.linkText("Add article"));       

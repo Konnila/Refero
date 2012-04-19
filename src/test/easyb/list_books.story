@@ -8,7 +8,7 @@ description 'User can list all books'
 
 scenario 'books missing required fields are not added in database' {
     
-    given 'command add new book selected' {
+    given 'command add new book selected', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9090");
         element = driver.findElement(By.linkText("Add book"));       

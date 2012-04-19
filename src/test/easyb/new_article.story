@@ -7,7 +7,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 description 'User can add an valid article'
 
 scenario 'user cant add a new article when missing required fields', {
-    given 'command add new article selected' {
+    given 'command add new article selected', {
         addArticleAddress = "http://localhost:9090"
         webDriver = new HtmlUnitDriver();
         element = driver.findElement(By.linkText("Add article"));       
