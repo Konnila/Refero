@@ -8,13 +8,14 @@ description 'User can add an valid article'
 
 scenario 'user cant add a new article when missing required fields', {
     given 'command add new article selected', {
-        addArticleAddress = "http://localhost:9090"
         webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
         element = webDriver.findElement(By.linkText("Add article"));       
         element.click();
     }
 
     when 'required fields are not filled', {
+        element = webDriver.findElement(By.linkText("Lähetä")); 
         element.submit();
     }
     then 'article will not be added', {
@@ -25,8 +26,8 @@ scenario 'user cant add a new article when missing required fields', {
 scenario 'user can add an article with a valid information', {
 
     given 'command add article selected', {
-        addArticleAddress = "http://localhost:9090"
         webDriver = new HtmlUnitDriver();
+        webDriver.get("http://localhost:9090");
         element = webDriver.findElement(By.linkText("Add article"));       
         element.click();
     }

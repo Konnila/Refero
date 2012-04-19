@@ -15,6 +15,7 @@ scenario 'user cant add a new inproceeding when missing required fields', {
     }
 
     when 'required fields are not filled', {
+        element = webDriver.findElement(By.linkText("Lähetä")); 
         element.submit();
     }
     then 'inproceeding will not be added', {
