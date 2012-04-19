@@ -16,7 +16,7 @@ public class Main {
         book.setAuthor("Jammu");
         book.setReleaseYear(2012);
         
-        refGen.generateReferenceId(book);
+        
         
     }
 }

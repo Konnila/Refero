@@ -25,6 +25,7 @@ public class FieldsTest {
         expected.add("volume");
         expected.add("number");
         expected.add("pages");
+        expected.add("referenceId");
         
         List<String> actual = new ArrayList<String>();
         

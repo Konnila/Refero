@@ -8,6 +8,7 @@ import ohtu.refero.models.Book;
 import ohtu.refero.models.Inproceedings;
 import ohtu.refero.service.BookService;
 import ohtu.refero.service.InproceedingsService;
+import ohtu.refero.service.ReferenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ public class BookController {
     
     @Autowired
     BookService bookService;
+    
+    @Autowired
+    ReferenceGenerator refGen;
     
     @RequestMapping(value = "book", method = RequestMethod.GET)
     public String directToForm(Model model) {   
@@ -47,7 +51,8 @@ public class BookController {
     }
     
     @RequestMapping(value = "book", method = RequestMethod.POST)
-    public String postBook(@Valid @ModelAttribute("bookForm") Book book, BindingResult result) {    
+    public String postBook(@Valid @ModelAttribute("bookForm") Book book, BindingResult result) {
+        book.setReferenceId(refGen.generateReferenceId(book,bookService));
         if (result.hasErrors())
             return "new_book";
         

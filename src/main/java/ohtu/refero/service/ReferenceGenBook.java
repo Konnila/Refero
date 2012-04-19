@@ -13,17 +13,17 @@ import org.springframework.stereotype.Service;
 public class ReferenceGenBook implements ReferenceGenerator {
 
     private char suffix;
-    public BookServiceImplementation bookServ;
+    
 
     public ReferenceGenBook() {
-        bookServ = new BookServiceImplementation();
+        
         suffix = 'a';
 
     }
 
 
     @Override
-    public String generateReferenceId(Object object) {
+    public String generateReferenceId(Object object, BookService bookService) {
         Book book = (Book) object;
         String rID = "";
         //append authors surnames first 2 letters
@@ -33,8 +33,9 @@ public class ReferenceGenBook implements ReferenceGenerator {
         year = year.substring(year.length() - 2, year.length());
         rID += year;
 
-        while (checkIfConflict(rID)) {
+        while (checkIfConflict(rID, bookService)) {
             rID = appendSuffix(rID);
+            suffix++;
         }
 
         return rID;
@@ -42,26 +43,24 @@ public class ReferenceGenBook implements ReferenceGenerator {
     }
 
     @Override
-    public boolean checkIfConflict(String refID) {
-        if (bookServ.findByReferenceId(refID) == null) {
-            return false;
-        }
+    public boolean checkIfConflict(String refID, BookService bookService) {
+            if(bookService.findByReferenceId(refID) == null) return false;
+            return true;
+        
 
-        return true;
     }
 
     @Override
     public String appendSuffix(String refID) {
 
         if (refID.length() < 5) {
-            suffix++;
-            return (refID + suffix--);
+            return (refID + suffix);
         }
-        if (refID.length() > 4 && refID.charAt(refID.length()) == 'x') {
+        if (refID.length() > 4 && refID.charAt(refID.length()) == 'z') {
             suffix = 'a';
             return refID + suffix;
         }
 
-        return refID.replace(refID.charAt(refID.length()), suffix++);
+        return refID.replace(refID.charAt(refID.length()), suffix);
     }
 }
