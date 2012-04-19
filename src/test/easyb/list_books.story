@@ -6,7 +6,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
 description 'User can list all books'
 
-scenario 'books missing required fields are not added in database' {
+scenario 'books missing required fields are not added in database', {
     
     given 'command add new book selected', {
         driver = new HtmlUnitDriver();
