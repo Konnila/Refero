@@ -17,7 +17,7 @@
             <li><a href="/inproceeding">Add inproceeding</a></li>
         </ul>
 
-        <h2>All article</h2>
+        <h2>All articles</h2>
 
         <c:forEach var="article" items="${articles}">
             <pre>
@@ -29,7 +29,7 @@
         </c:forEach>
 
         <h2>All inproceedings</h2>
-        
+
         <c:forEach var="inpro" items="${inproceedings}">
             <pre>
                 Author: ${inpro.author}
@@ -40,6 +40,14 @@
         </c:forEach>
 
         <h2>All books</h2>
+        <c:forEach var="book" items="${books}">
+            <pre>
+                Author: ${book.author}
+                Title: ${book.title}
+                Year: ${book.releaseYear}
+                <a href="/book/${book.id}">More details</a>
+            </pre>
+        </c:forEach>
 
     </body>
 </html>

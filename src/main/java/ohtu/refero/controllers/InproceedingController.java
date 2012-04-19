@@ -33,7 +33,7 @@ public class InproceedingController {
     }
     
     @RequestMapping(value = "inproceeding/{id}", method = RequestMethod.GET)
-    public String getArticle(@PathVariable Long id, Model model) {
+    public String getInproceeding(@PathVariable Long id, Model model) {
         
         Inproceedings inproceedings = inprocService.findById(id);
         String bibtex = null;
@@ -49,7 +49,7 @@ public class InproceedingController {
     }
     
     @RequestMapping(value = "inproceeding", method = RequestMethod.POST)
-    public String postArticle(@Valid @ModelAttribute("inproceedingForm") Inproceedings inproceedings, BindingResult result) {    
+    public String postInproceeding(@Valid @ModelAttribute("inproceedingForm") Inproceedings inproceedings, BindingResult result) {    
         if (result.hasErrors())
             return "new_inproceeding";
         
