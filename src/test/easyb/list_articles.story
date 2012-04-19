@@ -6,7 +6,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
 description 'User can list all articles'
 
-scenario 'articles missing required fields are not added in database' {
+scenario 'articles missing required fields are not added in database', {
     
     given 'command add new article selected', {
         driver = new HtmlUnitDriver();
