@@ -9,9 +9,11 @@ public class Article extends Reference {
 
     @NotBlank(message = "Journal can't be empty.")
     private String journal;
-    @Min(1)
+    
+    @Min(value = 1, message = "Volume must be at least 1.")
     private Integer volume;
-    @Min(1)
+    
+    @Min(value = 1, message = "Number must be at least 1.")
     private Integer number;
     private String pages;
 

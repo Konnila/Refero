@@ -15,19 +15,14 @@
             <li><a href="/article">Add article</a></li>
         </ul>
 
-        <h2>All articles</h2>
+        <h2>All article</h2>
         
-        <c:forEach var="object" items="${list}">
+        <c:forEach var="article" items="${articles}">
             <pre>
-                Id: ${object.id}
-                Author: ${object.author}
-                Title: ${object.title}
-                Journal: ${object.journal}
-                Volume: ${object.volume}
-                Number: ${object.number}
-                Year: ${object.releaseYear}
-                Publisher: ${object.publisher}
-                Address: ${object.address}
+                Author: ${article.author}
+                Title: ${article.title}
+                Year: ${article.releaseYear}
+                <a href="/article/${article.id}">More details</a>
             </pre>
         </c:forEach>
 

@@ -17,7 +17,7 @@ public class RootController {
     @RequestMapping("/")
     public String root(Model model) {
         List<Article> articles = articleService.findAll();
-        model.addAttribute("list", articles);
+        model.addAttribute("articles", articles);
         return "index";
     }
 }
