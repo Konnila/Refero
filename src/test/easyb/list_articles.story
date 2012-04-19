@@ -6,18 +6,74 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
 description 'User can list all articles'
 
-scenario 'user can list all articles', {
-
-    given 'command list articles selected', {
-
-        addArticleAddress = "http://localhost:9090/article"
-        webDriver = new HtmlUnitDriver();
+scenario 'articles missing required fields are not added in database' {
+    
+    given 'command add new article selected' {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:9090");
+        element = driver.findElement(By.linkText("Add article"));       
+        element.click();
     }
 
-    when 'list contains articles', {
+    when 'required fields are not filled', {
+        element = webDriver.findElement(By.name("title"))
+        assertNotNull(element)
 
-        webDriver.get(addArticleAddress)
-        
+        element.sendKeys("Harry Potter")
+
+        element.submit();
+
+        driver.get("http://localhost:9090/article");
+
+        element = webDriver.findElement(By.name("author"))
+        assertNotNull(element)
+
+        element.sendKeys("Captain Hadoque")
+
+        element = webDriver.findElement(By.name("title"))
+        assertNotNull(element)
+
+        element.sendKeys("Adventures of Captain Hadoque")
+
+        element = webDriver.findElement(By.name("journal"))
+        assertNotNull(element)
+
+        element.sendKeys("The Mighty Sea Adventures")
+
+        element = webDriver.findElement(By.name("volume"))
+        assertNotNull(element)
+
+        element.sendKeys("2")
+
+        element = webDriver.findElement(By.name("number"))
+        assertNotNull(element)
+
+        element.sendKeys("10")
+
+        element = webDriver.findElement(By.name("releaseYear"))
+        assertNotNull(element)
+
+        element.sendKeys("2012")
+
+        element.submit();
+    }
+
+    then 'invalid articles are not listed', {
+        driver.getPageSource().contains("Harry Potter").shouldBe false
+    }
+}
+
+scenario 'user can list all articles', {
+
+    given 'command add new article selected' {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:9090");
+        element = driver.findElement(By.linkText("Add article"));       
+        element.click();
+    }
+
+
+    when 'list contains articles', {
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)
 
@@ -50,7 +106,7 @@ scenario 'user can list all articles', {
 
         element.submit()
 
-        webDriver.get(addArticleAddress)
+        driver.get("http://localhost:9090/article");
         
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)

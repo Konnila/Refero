@@ -5,18 +5,33 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
 description 'User can add an valid article'
- 
-scenario 'user can add an article with valid information', {
 
-    given 'command add article selected', {
-
+scenario 'user cant add a new article when missing required fields', {
+    given 'command add new article selected' {
+        addArticleAddress = "http://localhost:9090"
         webDriver = new HtmlUnitDriver();
+        element = driver.findElement(By.linkText("Add article"));       
+        element.click();
     }
 
-    when 'valid information is entered', {
-        
-        webDriver.get("http://localhost:9090/article")
-        
+    when 'required fields are not filled', {
+        element.submit();
+    }
+    then 'article will not be added', {
+        driver.getPageSource().contains("Journal can't be empty").shouldBe true
+    }
+}
+
+scenario 'user can add an article with a valid information', {
+
+    given 'command add article selected', {
+        addArticleAddress = "http://localhost:9090"
+        webDriver = new HtmlUnitDriver();
+        element = driver.findElement(By.linkText("Add article"));       
+        element.click();
+    }
+
+    when 'valid information is entered', {              
         element = webDriver.findElement(By.name("author"))
         assertNotNull(element)
 
@@ -50,8 +65,7 @@ scenario 'user can add an article with valid information', {
         element.submit()
     }
 
-    then 'article will be added', {
-        
+    then 'article will be added', {     
         webDriver.getPageSource().contains("Adventures of Captain Hadoque")
     }
 }
