@@ -17,7 +17,7 @@
             <li><a href="/inproceeding">Add inproceeding</a></li>
         </ul>
 
-        <h2>All article</h2>
+        <h2>All articles</h2>
 
         <c:forEach var="article" items="${articles}">
             <pre>
