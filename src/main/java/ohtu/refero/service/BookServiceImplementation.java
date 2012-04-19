@@ -35,8 +35,8 @@ public class BookServiceImplementation implements BookService {
         return bookRepository.findOne(id);
     }
 
-//    @Override
-//    public Book findByReferenceId(String id) {
-//        return bookRepository.findByReferenceId(id);
-//    }
+    @Override
+    public Book findByReferenceId(String id) {
+        return bookRepository.findByReferenceId(id);
+    }
 }
