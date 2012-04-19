@@ -48,7 +48,7 @@
         <form:input path="publisher" />
         <form:errors path ="publisher"/><br>
 
-        <input type="submit" name="Add inproceeding"><br>
+        <input type="submit" value="Add inproceeding"><br>
     </form:form>
 
 
