@@ -16,12 +16,16 @@ public class BibTeXGenerator {
         buffer.append("}");
     }
     
-    public void writeNewline() {
-        buffer.append("\n");
+    public void writeIndentation() {
+        buffer.append("  ");
     }
     
     public void writeSeparator() {
         buffer.append(",");
+    }
+    
+    public void writeNewline() {
+        buffer.append("\n");
     }
     
     public void writeObjectFieldStart(String name) {
@@ -39,6 +43,7 @@ public class BibTeXGenerator {
     public void writeObjectField(String name, Object object) {
         
         writeIndentation();
+        
         buffer.append(name)
               .append(" ")
               .append("=")
@@ -47,10 +52,6 @@ public class BibTeXGenerator {
         writeObjectStart();
         writeObject(object);
         writeObjectEnd();
-    }
-    
-    public void writeIndentation() {
-        buffer.append("  ");
     }
     
     @Override
