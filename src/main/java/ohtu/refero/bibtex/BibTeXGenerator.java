@@ -38,6 +38,7 @@ public class BibTeXGenerator {
     
     public void writeObjectField(String name, Object object) {
         
+        writeIndentation();
         buffer.append(name)
               .append(" ")
               .append("=")
@@ -46,6 +47,10 @@ public class BibTeXGenerator {
         writeObjectStart();
         writeObject(object);
         writeObjectEnd();
+    }
+    
+    public void writeIndentation() {
+        buffer.append("  ");
     }
     
     @Override

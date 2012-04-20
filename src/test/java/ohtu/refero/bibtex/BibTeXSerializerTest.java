@@ -50,14 +50,14 @@ public class BibTeXSerializerTest {
     @Test
     public void serializeArticle() throws NoIdException {       
         builder.append("@article{1,\n");
-        builder.append("author = {Bruhn, Russel E. and Burton, Philip J.},\n");
-        builder.append("journal = {SIGCSE Bull.},\n");
-        builder.append("number = {4},\n");
-        builder.append("pages = {94--99},\n");
-        builder.append("publisher = {ACM},\n");
-        builder.append("year = {2003},\n");
-        builder.append("title = {An approach to teaching Java using computers},\n");
-        builder.append("volume = {35}\n");
+        builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
+        builder.append("  journal = {SIGCSE Bull.},\n");
+        builder.append("  number = {4},\n");
+        builder.append("  pages = {94--99},\n");
+        builder.append("  publisher = {ACM},\n");
+        builder.append("  year = {2003},\n");
+        builder.append("  title = {An approach to teaching Java using computers},\n");
+        builder.append("  volume = {35}\n");
         builder.append("}");
         
         String expected = builder.toString();
@@ -69,10 +69,10 @@ public class BibTeXSerializerTest {
     @Test
     public void serializeBook() throws NoIdException {       
         builder.append("@book{5,\n");
-        builder.append("author = {Bruhn, Russel E. and Burton, Philip J.},\n");
-        builder.append("publisher = {LUKE},\n");
-        builder.append("year = {2003},\n");
-        builder.append("title = {An approach to teaching Java using computers}\n");
+        builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
+        builder.append("  publisher = {LUKE},\n");
+        builder.append("  year = {2003},\n");
+        builder.append("  title = {An approach to teaching Java using computers}\n");
         builder.append("}");
         
         String expected = builder.toString();
@@ -84,12 +84,12 @@ public class BibTeXSerializerTest {
     @Test
     public void serializeInproceedings() throws NoIdException {
         builder.append("@inproceedings{6,\n");
-        builder.append("author = {Bruhn, Russel E. and Burton, Philip J.},\n");
-        builder.append("booktitle = {SKYWALKER},\n");
-        builder.append("pages = {1--5},\n");
-        builder.append("publisher = {LUKE},\n");
-        builder.append("year = {2003},\n");
-        builder.append("title = {An approach to teaching Java using computers}\n");     
+        builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
+        builder.append("  booktitle = {SKYWALKER},\n");
+        builder.append("  pages = {1--5},\n");
+        builder.append("  publisher = {LUKE},\n");
+        builder.append("  year = {2003},\n");
+        builder.append("  title = {An approach to teaching Java using computers}\n");     
         builder.append("}");
         
         String expected = builder.toString();
@@ -112,14 +112,14 @@ public class BibTeXSerializerTest {
         article.setPublisher("");
         
         builder.append("@article{1,\n");
-        builder.append("author = {Bruhn, Russel E. and Burton, Philip J.},\n");
-        builder.append("journal = {SIGCSE Bull.},\n");
-        builder.append("number = {4},\n");
-        builder.append("pages = {94--99},\n");
-        builder.append("publisher = {},\n");
-        builder.append("year = {2003},\n");
-        builder.append("title = {An approach to teaching Java using computers},\n");
-        builder.append("volume = {35}\n");
+        builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
+        builder.append("  journal = {SIGCSE Bull.},\n");
+        builder.append("  number = {4},\n");
+        builder.append("  pages = {94--99},\n");
+        builder.append("  publisher = {},\n");
+        builder.append("  year = {2003},\n");
+        builder.append("  title = {An approach to teaching Java using computers},\n");
+        builder.append("  volume = {35}\n");
         builder.append("}");
         
         assertFalse(builder.toString().equals(BibTeXSerializer.serialize(article)));
