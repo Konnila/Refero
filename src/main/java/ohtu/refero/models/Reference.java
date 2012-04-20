@@ -1,5 +1,6 @@
 package ohtu.refero.models;
 
+import java.util.List;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import ohtu.refero.bibtex.BibTeXProperty;
@@ -9,7 +10,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public abstract class Reference extends JPAObject {
 
     @NotBlank(message = "Author can't be empty.")
-    private String author;
+    private List<Author> author;
     
     @NotBlank(message = "Title can't be empty.")
     private String title;
@@ -38,11 +39,11 @@ public abstract class Reference extends JPAObject {
         this.address = address;
     }
     
-    public String getAuthor() {
+    public List<Author> getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(List<Author> author) {
         this.author = author;
     }
 
