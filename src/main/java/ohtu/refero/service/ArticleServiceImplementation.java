@@ -27,6 +27,7 @@ public class ArticleServiceImplementation implements ArticleService {
     }
 
     @Override
+    
     public List<Article> findAll() {
         return articleRepository.findAll();
     }
