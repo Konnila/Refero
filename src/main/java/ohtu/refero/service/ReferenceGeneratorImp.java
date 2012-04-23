@@ -36,26 +36,23 @@ public class ReferenceGeneratorImp implements ReferenceGenerator {
         while (referenceIDrepo.findByReferenceID(refID) != null) {
             refID = appendSuffix(refID);
         }
-        //Okay, refID should be unique
+        //Okay, refID should be unique now
         referenceID.setReferenceID(refID);
         return referenceIDrepo.save(referenceID);
     }
 
     public String appendSuffix(String refid) {
-//        char appendent;
-
-        if (refid.length() < 5) return refid + 'a';
-        
+        if (refid.length() < 5) return refid + 'a';    
         if (refid.endsWith("z")) return refid + 'a';
-        
-//        appendent = refid.charAt(refid.length()-1);
-//        appendent++;
+        //create char[]in order to change the last char of string
         char[] refChar = refid.toCharArray();
         refChar[refChar.length-1]++;
         String returnableRefId = "";
+        //convert char[] back to string
         for (int i = 0; i < refChar.length; i++) {
             returnableRefId += refChar[i];         
         }
+        
         return returnableRefId;
     }
 
