@@ -12,14 +12,15 @@ public class InproceedingsServiceImplementation implements InproceedingsService 
 
     @Autowired
     InproceedingsRepository inproceedingsRepository;
-
+    @Autowired
+    ReferenceGenerator refGen;
     @Transactional
     @Override
     public Inproceedings save(Inproceedings inProceedings) {       
         if (inProceedings == null) {
             return null;
         }
-        
+        inProceedings.setReferenceID(refGen.generateReferenceId(inProceedings));
         inProceedings = inproceedingsRepository.save(inProceedings);
         
         return inProceedings;

@@ -32,6 +32,7 @@
             Year: ${inproceedings.releaseYear}
             Pages: ${inproceedings.pages}
             Publisher: ${inproceedings.publisher}
+            ReferenceID: ${inproceedings.referenceID}
         </pre>
         
         <h2>BibTeX</h2>

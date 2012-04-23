@@ -4,6 +4,7 @@ import org.junit.Before;
 import ohtu.refero.models.Article;
 import ohtu.refero.models.Book;
 import ohtu.refero.models.Inproceedings;
+import ohtu.refero.models.ReferenceID;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -13,13 +14,15 @@ public class BibTeXSerializerTest {
     private Book book;
     private Inproceedings i;
     private StringBuilder builder;
-    
+   private ReferenceID refID;
     @Before
     public void setUp() {   
         article = new Article();
         book = new Book();
         i = new Inproceedings();
-        
+        refID = new ReferenceID();
+        refID.setReferenceID("Br03");
+        article.setReferenceID(refID);
         article.setId(1L);
         article.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
         article.setTitle("An approach to teaching Java using computers");
@@ -30,12 +33,14 @@ public class BibTeXSerializerTest {
         article.setPages("94--99");
         article.setPublisher("ACM");
         
+        book.setReferenceID(refID);
         book.setId(5L);
         book.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
         book.setTitle("An approach to teaching Java using computers");
         book.setReleaseYear(2003);
         book.setPublisher("LUKE");
         
+        i.setReferenceID(refID);
         i.setId(6L);
         i.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
         i.setTitle("An approach to teaching Java using computers");
@@ -49,7 +54,7 @@ public class BibTeXSerializerTest {
     
     @Test
     public void serializeArticle() throws NoIdException {       
-        builder.append("@article{1,\n");
+        builder.append("@article{Br03,\n");
         builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
         builder.append("  journal = {SIGCSE Bull.},\n");
         builder.append("  number = {4},\n");
@@ -60,15 +65,18 @@ public class BibTeXSerializerTest {
         builder.append("  volume = {35}\n");
         builder.append("}");
         
+        
         String expected = builder.toString();
+        System.out.println(expected);
         String actual = BibTeXSerializer.serialize(article);
+        System.out.println(actual);
         
         assertEquals(expected, actual);          
     }
     
     @Test
     public void serializeBook() throws NoIdException {       
-        builder.append("@book{5,\n");
+        builder.append("@book{Br03,\n");
         builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
         builder.append("  publisher = {LUKE},\n");
         builder.append("  year = {2003},\n");
@@ -83,7 +91,7 @@ public class BibTeXSerializerTest {
     
     @Test
     public void serializeInproceedings() throws NoIdException {
-        builder.append("@inproceedings{6,\n");
+        builder.append("@inproceedings{Br03,\n");
         builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
         builder.append("  booktitle = {SKYWALKER},\n");
         builder.append("  pages = {1--5},\n");

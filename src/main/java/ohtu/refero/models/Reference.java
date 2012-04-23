@@ -1,7 +1,9 @@
 package ohtu.refero.models;
 
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import ohtu.refero.bibtex.BibTeXId;
 import ohtu.refero.bibtex.BibTeXProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -10,18 +12,18 @@ public abstract class Reference extends JPAObject {
 
     @NotBlank(message = "Author can't be empty.")
     private String author;
-    
     @NotBlank(message = "Title can't be empty.")
     private String title;
-
     @BibTeXProperty(name = "year")
     @NotNull(message = "Year can't be empty.")
-    private Integer releaseYear; 
+    private Integer releaseYear;
     private String publisher;
     private String address;
-    
-//    private String referenceID;
+    @OneToOne
+    @BibTeXId
+    private ReferenceID referenceID;
 
+//    private String referenceID;
 //    public String getReferenceID() {
 //        return referenceID;
 //    }
@@ -29,7 +31,6 @@ public abstract class Reference extends JPAObject {
 //    public void setReferenceID(String referenceID) {
 //        this.referenceID = referenceID;
 //    }
-
     public String getAddress() {
         return address;
     }
@@ -37,7 +38,7 @@ public abstract class Reference extends JPAObject {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     public String getAuthor() {
         return author;
     }
@@ -54,6 +55,15 @@ public abstract class Reference extends JPAObject {
         this.title = title;
     }
 
+    public ReferenceID getReferenceID() {
+        return referenceID;
+    }
+
+    public void setReferenceID(ReferenceID referenceID) {
+        this.referenceID = referenceID;
+    }
+    
+
     public Integer getReleaseYear() {
         return releaseYear;
     }
@@ -69,7 +79,7 @@ public abstract class Reference extends JPAObject {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

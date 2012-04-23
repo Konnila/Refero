@@ -21,6 +21,7 @@ public class FieldsTest {
         expected.add("releaseYear");
         expected.add("publisher");
         expected.add("address");
+        expected.add("referenceID");
         expected.add("journal");
         expected.add("volume");
         expected.add("number");

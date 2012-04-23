@@ -12,7 +12,10 @@ public class ArticleServiceImplementation implements ArticleService {
 
     @Autowired
     ArticleRepository articleRepository;
-
+    
+    @Autowired
+    ReferenceGenerator refGen;
+    
     @Transactional
     @Override
     public Article save(Article article) {
@@ -20,7 +23,7 @@ public class ArticleServiceImplementation implements ArticleService {
         if (article == null) {
             return null;
         }
-        
+        article.setReferenceID(refGen.generateReferenceId(article));
         article = articleRepository.save(article);
         
         return article;

@@ -13,6 +13,9 @@ public class BookServiceImplementation implements BookService {
     @Autowired
     BookRepository bookRepository;
 
+    @Autowired
+    ReferenceGenerator refGen;
+    
     @Transactional
     @Override
     public Book save(Book book) {       
@@ -20,6 +23,7 @@ public class BookServiceImplementation implements BookService {
             return null;
         }
         
+        book.setReferenceID(refGen.generateReferenceId(book));
         book = bookRepository.save(book);
         
         return book;
