@@ -8,7 +8,7 @@ public class Book extends Reference {
     
     @NotBlank(message = "Publisher can't be empty.")
     private String publisher;
-
+    
     @Override
     public void setPublisher(String publisher) {
         this.publisher = publisher;
