@@ -4,8 +4,11 @@
  */
 package ohtu.refero.service;
 
+import ohtu.refero.models.Reference;
+import ohtu.refero.models.ReferenceID;
+
 public interface ReferenceGenerator {
-    String generateReferenceId(Object object);
+    ReferenceID generateReferenceId(Reference reference);
     
     
 }

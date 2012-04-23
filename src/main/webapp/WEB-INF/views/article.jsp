@@ -28,6 +28,7 @@
             Year: ${article.releaseYear}
             Publisher: ${article.publisher}
             Address: ${article.address}
+            ReferenceID: ${article.referenceID}
         </pre>
         
         <h2>BibTeX</h2>

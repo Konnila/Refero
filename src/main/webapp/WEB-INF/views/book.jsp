@@ -29,7 +29,7 @@
             Publisher: ${book.publisher}
             Year: ${book.releaseYear}
             Address: ${book.address}
-
+            ReferenceID: ${book.referenceID}
 
             
             
