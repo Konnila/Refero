@@ -7,6 +7,7 @@ import ohtu.refero.bibtex.BibTeXSerializer;
 import ohtu.refero.bibtex.NoIdException;
 import ohtu.refero.models.Article;
 import ohtu.refero.service.ArticleService;
+import ohtu.refero.service.ReferenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ public class ArticleController {
     
     @Autowired
     ArticleService articleService;
+    
     
     @RequestMapping(value = "article", method = RequestMethod.GET)
     public String directToForm(Model model) {   

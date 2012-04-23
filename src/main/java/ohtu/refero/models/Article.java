@@ -1,6 +1,7 @@
 package ohtu.refero.models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -16,7 +17,7 @@ public class Article extends Reference {
     @Min(value = 1, message = "Number must be at least 1.")
     private Integer number;
     @Pattern(regexp = "\\d+--\\d+|", message = "Insert the pagenumbers in a format like: 1--25")
-   
+    
     private String pages;
 
     public String getJournal() {
@@ -26,6 +27,8 @@ public class Article extends Reference {
     public void setJournal(String journal) {
         this.journal = journal;
     }
+
+ 
 
     public Integer getVolume() {
         return volume;
