@@ -6,19 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class ReferenceID implements Serializable {
+public class ReferenceID extends JPAObject {
     private String referenceID;
     
-    @Id
-    Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
     
     public String getReferenceID() {
         return referenceID;
@@ -27,6 +17,12 @@ public class ReferenceID implements Serializable {
     public void setReferenceID(String referenceID) {
         this.referenceID = referenceID;
     }
+
+    @Override
+    public String toString() {
+        return referenceID;
+    }
+    
     
     
     
