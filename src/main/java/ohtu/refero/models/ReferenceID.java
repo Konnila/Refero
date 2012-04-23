@@ -2,8 +2,10 @@
 package ohtu.refero.models;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class ReferenceID implements Serializable {
     private String referenceID;
     
