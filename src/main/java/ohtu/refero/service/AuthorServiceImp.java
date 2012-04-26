@@ -36,10 +36,11 @@ public class AuthorServiceImp implements AuthorService {
         
         return authorRepo.save(authors);
     }
+    
 
     @Override
     public Author findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return authorRepo.findOne(id);
     }
     
 }
