@@ -24,6 +24,24 @@ public class ReferenceID extends JPAObject {
     public String toString() {
         return referenceID;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ReferenceID other = (ReferenceID) obj;
+        if ((this.referenceID == null) ? (other.referenceID != null) : !this.referenceID.equals(other.referenceID)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
     
     
     
