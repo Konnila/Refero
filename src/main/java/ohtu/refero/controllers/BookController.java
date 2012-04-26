@@ -62,10 +62,14 @@ public class BookController {
         if(author.isEmpty()) result.addError(fe);
         if (result.hasErrors())
             return "new_book";
+        List<Author> auth = authorConv.convertToAuthor(author);
+        List<Author> seivatut = authorServ.save(auth);
         
-        book.setAuthors(authorServ.save(authorConv.convertToAuthor(author)));
-        
+        book.setAuthors(seivatut);
         bookService.save(book);
+//        book.setAuthors(authorServ.save(authorConv.convertToAuthor(author)));
+        
+//        bookService.save(book);
         return "redirect:/";
     }
 }

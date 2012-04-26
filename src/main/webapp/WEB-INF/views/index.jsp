@@ -43,7 +43,10 @@
         <h2>All books</h2>
         <c:forEach var="book" items="${books}">
             <pre>
-                Author: ${book.author}
+                Author(s):<c:forEach var="author" items="${book.authors}">
+                 ${author.firstName} ${author.surName}
+                </c:forEach>
+                
                 Title: ${book.title}
                 Year: ${book.releaseYear}
                 <a href="/book/${book.id}">More details</a>
