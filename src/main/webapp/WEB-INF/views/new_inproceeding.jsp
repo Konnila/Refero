@@ -22,36 +22,35 @@
 
         <h2>Let's add an inproceeding!</h2>
 
-    <form:form method="POST" commandName="inproceedingForm" action="inproceeding">
+        <form:form method="POST" commandName="inproceedingForm" action="inproceeding">
 
-        <form:label path="author">Author:</form:label>
-        <form:input path="author" />
-        <form:errors path ="author"/> <br>    
+            <label>Author:</label>
+            <input type="text" name="author"><br>  
 
-        <form:label path="title">Title:</form:label>
-        <form:input path="title" />
-        <form:errors path ="title"/><br>
+            <form:label path="title">Title:</form:label>
+            <form:input path="title" />
+            <form:errors path ="title"/><br>
 
-        <form:label path="bookTitle">Book title:</form:label>
-        <form:input path="bookTitle" />
-        <form:errors path ="bookTitle"/><br>
+            <form:label path="bookTitle">Book title:</form:label>
+            <form:input path="bookTitle" />
+            <form:errors path ="bookTitle"/><br>
 
-        <form:label path="releaseYear">Year:</form:label>
-        <form:input path="releaseYear" />
-        <form:errors path ="releaseYear"/><br>
+            <form:label path="releaseYear">Year:</form:label>
+            <form:input path="releaseYear" />
+            <form:errors path ="releaseYear"/><br>
 
-        <form:label path="pages">Pages:</form:label>
-        <form:input path="pages" />
-        <form:errors path ="pages"/><br>
+            <form:label path="pages">Pages:</form:label>
+            <form:input path="pages" />
+            <form:errors path ="pages"/><br>
 
-        <form:label path="publisher">Publisher:</form:label>
-        <form:input path="publisher" />
-        <form:errors path ="publisher"/><br>
+            <form:label path="publisher">Publisher:</form:label>
+            <form:input path="publisher" />
+            <form:errors path ="publisher"/><br>
 
-        <input type="submit" value="Add inproceeding"><br>
-    </form:form>
-
+            <input type="submit" value="Add inproceeding"><br>
+        </form:form>
 
 
-</body>
+
+    </body>
 </html>

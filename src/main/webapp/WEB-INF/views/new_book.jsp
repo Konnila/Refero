@@ -24,7 +24,7 @@
 
         <form:form method="POST" commandName="bookForm" action="book">
             <label>Author:</label>
-            <input type="text" name="author">   
+            <input type="text" name="author">  <br>
 
             <form:label path="title">Title:</form:label>
             <form:input path="title" />

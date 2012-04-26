@@ -19,9 +19,8 @@
 
         <form:form method="POST" commandName="articleForm" action="article">
 
-            <form:label path="author">Author:</form:label>
-            <form:input path="author" />
-            <form:errors path ="author"/> <br>    
+            <label>Author:</label>
+            <input type="text" name="author"><br>   
 
             <form:label path="title">Title:</form:label>
             <form:input path="title" />
