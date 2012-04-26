@@ -28,10 +28,11 @@ public class AuthorServiceImp implements AuthorService {
     
     @Override
     public List<Author> save(List<Author> authors) {
-//        for (Author author : authors) {
-//            if(authorRepo.findByFirstNameAndSurName(author.getFirstName(), author.getSurName()) != null)
-//                authors.remove(author);
-//        }
+        for (Author author : authors) {
+            if(authorRepo.findByFirstNameAndSurName(author.getFirstName(), author.getSurName()) != null)
+                authors.remove(author);
+        }
+        
         
         return authorRepo.save(authors);
     }
