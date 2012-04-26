@@ -5,11 +5,14 @@ import ohtu.refero.models.Article;
 import ohtu.refero.models.Book;
 import ohtu.refero.models.Inproceedings;
 import ohtu.refero.models.ReferenceID;
+import ohtu.refero.service.StringToAuthorConverter;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class BibTeXSerializerTest {
-
+    @Autowired
+    StringToAuthorConverter converter;
     private Article article;
     private Book book;
     private Inproceedings i;
@@ -24,7 +27,7 @@ public class BibTeXSerializerTest {
         refID.setReferenceID("Br03");
         article.setReferenceID(refID);
         article.setId(1L);
-        article.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
+        article.setAuthor(converter.convertToAuthor("Bruhn, Russel E. and Burton, Philip J."));
         article.setTitle("An approach to teaching Java using computers");
         article.setJournal("SIGCSE Bull.");
         article.setVolume(35);

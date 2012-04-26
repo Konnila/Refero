@@ -24,8 +24,8 @@ public class ReferenceGeneratorImp implements ReferenceGenerator {
     @Transactional
     @Override
     public ReferenceID generateReferenceId(Reference reference) {
-        //Here we shalt copy 2 first letters from Authors name to refID
-        String refID = reference.getAuthor().substring(0, 2);
+        //Here we shalt copy 2 first letters from Authors surname to refID
+        String refID = reference.getAuthors().get(0).getSurName();
         //Now we append 2 last digits from references Releaseyear to ref, which we shalt return
         String year = reference.getReleaseYear() + "";
         year = year.substring(year.length() - 2, year.length());

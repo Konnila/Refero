@@ -15,7 +15,9 @@ public class BookServiceImplementation implements BookService {
     BookRepository bookRepository;
     @Autowired
     ReferenceGenerator refGen;
-
+    @Autowired
+    StringToAuthorConverter authorConv;
+    
     @Transactional
     @Override
     public Book save(Book book) {
