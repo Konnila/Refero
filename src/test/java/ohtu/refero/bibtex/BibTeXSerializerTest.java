@@ -14,8 +14,7 @@ public class BibTeXSerializerTest {
     private Book book;
     private Inproceedings i;
     private StringBuilder builder;
-    private ReferenceID refID;
-    
+   private ReferenceID refID;
     @Before
     public void setUp() {   
         article = new Article();
@@ -33,14 +32,14 @@ public class BibTeXSerializerTest {
         article.setReleaseYear(2003);
         article.setPages("94--99");
         article.setPublisher("ACM");
-
+        
         book.setReferenceID(refID);
         book.setId(5L);
         book.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
         book.setTitle("An approach to teaching Java using computers");
         book.setReleaseYear(2003);
         book.setPublisher("LUKE");
-
+        
         i.setReferenceID(refID);
         i.setId(6L);
         i.setAuthor("Bruhn, Russel E. and Burton, Philip J.");

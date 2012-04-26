@@ -19,15 +19,13 @@ public class ArticleServiceTest {
     @Before
     public void initialize() {
         testArticle = new Article();
-        testArticle.setId(1L);
-        testArticle.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
-        testArticle.setTitle("An approach to teaching Java using computers");
-        testArticle.setJournal("SIGCSE Bull.");
-        testArticle.setVolume(35);
-        testArticle.setNumber(4);
-        testArticle.setReleaseYear(2003);
-        testArticle.setPages("94--99");
-        testArticle.setPublisher("ACM");
+        testArticle.setAuthor("author");
+        testArticle.setTitle("t");
+        testArticle.setJournal("j");
+        testArticle.setNumber(254);
+        testArticle.setReleaseYear(1999);
+        testArticle.setVolume(2);
+        testArticle.setId(Long.MIN_VALUE);
     }
 
     @Test
