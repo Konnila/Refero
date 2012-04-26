@@ -68,6 +68,11 @@ public class Author extends JPAObject {
 
     @Override
     public String toString() {
-        return surName + " " + firstName;
+        
+        if (firstName == null) {
+            return surName;
+        }
+        
+        return firstName + " " + surName;
     }
 }
