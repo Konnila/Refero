@@ -15,12 +15,14 @@ public class BookServiceTest {
 
     @Autowired
     BookService bookRepo;
+    @Autowired
+    StringToAuthorConverter converter;
     Book testBook;
 
     @Before
     public void initialize() {
         testBook = new Book();
-        testBook.setAuthor("author");
+        testBook.setAuthors(converter.convertToAuthor("author aatami"));
         testBook.setTitle("t");
         testBook.setPublisher("Luke");
         testBook.setReleaseYear(1999);

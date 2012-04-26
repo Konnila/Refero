@@ -1,23 +1,28 @@
 package ohtu.refero.bibtex;
 
+import ohtu.refero.models.*;
 import org.junit.Before;
-import ohtu.refero.models.Article;
-import ohtu.refero.models.Book;
-import ohtu.refero.models.Inproceedings;
-import ohtu.refero.models.ReferenceID;
 import ohtu.refero.service.StringToAuthorConverter;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-context.xml",
+    "file:src/main/webapp/WEB-INF/spring-database.xml"})
 
 public class BibTeXSerializerTest {
     @Autowired
     StringToAuthorConverter converter;
-    private Article article;
-    private Book book;
-    private Inproceedings i;
-    private StringBuilder builder;
-   private ReferenceID refID;
+    Article article;
+    Book book;
+    Inproceedings i;
+    StringBuilder builder;
+    ReferenceID refID;
+    
     @Before
     public void setUp() {   
         article = new Article();
@@ -25,9 +30,10 @@ public class BibTeXSerializerTest {
         i = new Inproceedings();
         refID = new ReferenceID();
         refID.setReferenceID("Br03");
+        
         article.setReferenceID(refID);
         article.setId(1L);
-        article.setAuthor(converter.convertToAuthor("Bruhn, Russel E. and Burton, Philip J."));
+        article.setAuthors(converter.convertToAuthor("Bruhn, Russel E. and Burton, Philip J."));
         article.setTitle("An approach to teaching Java using computers");
         article.setJournal("SIGCSE Bull.");
         article.setVolume(35);
@@ -38,14 +44,14 @@ public class BibTeXSerializerTest {
         
         book.setReferenceID(refID);
         book.setId(5L);
-        book.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
+        book.setAuthors(converter.convertToAuthor("Bruhn, Russel E. and Burton, Philip J."));
         book.setTitle("An approach to teaching Java using computers");
         book.setReleaseYear(2003);
         book.setPublisher("LUKE");
         
         i.setReferenceID(refID);
         i.setId(6L);
-        i.setAuthor("Bruhn, Russel E. and Burton, Philip J.");
+        i.setAuthors(converter.convertToAuthor("Bruhn, Russel E. and Burton, Philip J."));
         i.setTitle("An approach to teaching Java using computers");
         i.setBookTitle("SKYWALKER");
         i.setPages("1--5");
@@ -58,7 +64,7 @@ public class BibTeXSerializerTest {
     @Test
     public void serializeArticle() throws NoIdException {       
         builder.append("@article{Br03,\n");
-        builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
+        builder.append("  authors = {Bruhn, Russel E. and Burton, Philip J.},\n");
         builder.append("  journal = {SIGCSE Bull.},\n");
         builder.append("  number = {4},\n");
         builder.append("  pages = {94--99},\n");
@@ -80,7 +86,7 @@ public class BibTeXSerializerTest {
     @Test
     public void serializeBook() throws NoIdException {       
         builder.append("@book{Br03,\n");
-        builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
+        builder.append("  authors = {Bruhn, Russel E. and Burton, Philip J.},\n");
         builder.append("  publisher = {LUKE},\n");
         builder.append("  year = {2003},\n");
         builder.append("  title = {An approach to teaching Java using computers}\n");
@@ -95,7 +101,7 @@ public class BibTeXSerializerTest {
     @Test
     public void serializeInproceedings() throws NoIdException {
         builder.append("@inproceedings{Br03,\n");
-        builder.append("  author = {Bruhn, Russel E. and Burton, Philip J.},\n");
+        builder.append("  authors = {Bruhn, Russel E. and Burton, Philip J.},\n");
         builder.append("  booktitle = {SKYWALKER},\n");
         builder.append("  pages = {1--5},\n");
         builder.append("  publisher = {LUKE},\n");

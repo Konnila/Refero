@@ -17,7 +17,7 @@ public class StringToAuthorConverterImp implements StringToAuthorConverter {
     public List<Author> convertToAuthor(String toConvert) {
         List<Author> listOfAuthors = new ArrayList<Author>();
         String[] authors = toConvert.split(",");
-        System.out.println(authors.length);
+        
         for (String string : authors) {
             string = string.trim();
             String[] firstAndSurnames = string.split(" ");

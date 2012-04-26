@@ -26,9 +26,6 @@ public class Author extends JPAObject {
         inproceedingsReferenceList = new ArrayList<Inproceedings>();
     }
 
-
-    
-    
     public List<Article> getArticleReferenceList() {
         return articleReferenceList;
     }
@@ -72,11 +69,7 @@ public class Author extends JPAObject {
     @Override
     public boolean equals(Object obj) {
         Author auth = (Author) obj;
-        if (auth.getFirstName() == this.firstName && auth.getSurName() == this.surName) {
-            return true;
-        } else {
-            return false;
-        }
+        return (auth.getFirstName().equals(this.firstName) && auth.getSurName().equals(this.surName));
     }
 
     @Override

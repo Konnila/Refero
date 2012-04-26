@@ -18,12 +18,14 @@ public class InproceedingsServiceTest {
 
     @Autowired
     InproceedingsService inproceedingsRepo;
+    @Autowired
+    StringToAuthorConverter converter;
     Inproceedings testInpro;
 
     @Before
     public void initialize() {
         testInpro = new Inproceedings();
-        testInpro.setAuthor("author");
+        testInpro.setAuthors(converter.convertToAuthor("author aatami"));
         testInpro.setTitle("t");
         testInpro.setBookTitle("Book");
         testInpro.setPages("1--5");

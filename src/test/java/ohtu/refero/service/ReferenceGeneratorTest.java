@@ -25,6 +25,8 @@ public class ReferenceGeneratorTest {
     @Autowired
     BookService bookServ;
     @Autowired
+    StringToAuthorConverter converter;
+    @Autowired
     ReferenceGenerator refGen;
     Book book;
     ReferenceID refID;
@@ -38,7 +40,7 @@ public class ReferenceGeneratorTest {
 
     @Test
     public void referenceOnOneBook() {
-        book.setAuthor("Hirvikoski Kasper");
+        book.setAuthors(converter.convertToAuthor("Hirvikoski Kasper"));
         book.setTitle("Ulinoita");
         book.setPublisher("Kum-pula");
         book.setReleaseYear(2010);
@@ -49,14 +51,14 @@ public class ReferenceGeneratorTest {
 
     @Test
     public void referenceOnTwoConflictingBooks() {
-        book.setAuthor("Konnila Toni");
+        book.setAuthors(converter.convertToAuthor("Konnila Toni"));
         book.setTitle("Jorinooita");
         book.setPublisher("Kumpu");
         book.setReleaseYear(1999);
         Long id = bookServ.save(book).getId();
         assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(), "Ko99");
 
-        book.setAuthor("Konn Ton");
+        book.setAuthors(converter.convertToAuthor("Konn Tonn"));
         book.setTitle("Jooita");
         book.setPublisher("Kumu");
         book.setReleaseYear(1999);

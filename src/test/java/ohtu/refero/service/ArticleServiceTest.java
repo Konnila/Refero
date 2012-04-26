@@ -14,12 +14,14 @@ public class ArticleServiceTest {
 
     @Autowired
     ArticleService articleRepo;
+    @Autowired
+    StringToAuthorConverter converter;
     Article testArticle;
 
     @Before
     public void initialize() {
         testArticle = new Article();
-        testArticle.setAuthor("author");
+        testArticle.setAuthors(converter.convertToAuthor("author aatami"));
         testArticle.setTitle("t");
         testArticle.setJournal("j");
         testArticle.setNumber(254);
