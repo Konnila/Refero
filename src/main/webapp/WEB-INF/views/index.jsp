@@ -15,6 +15,7 @@
             <li><a href="/article">Add article</a></li>
             <li><a href="/book">Add book</a></li>
             <li><a href="/inproceeding">Add inproceeding</a></li>
+            <li><a href="/authors">List all authors</a></li>
             <li><a href="/listbibtex">List all BiBTeXs</a></li>
         </ul>
 
