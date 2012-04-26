@@ -19,7 +19,7 @@
 
         <ul>
             <c:forEach var="author" items="${authors}">
-            <li>${author.firstName} ${author.surName}</li>
+            <li><a href="/author/${author.id}">${author}</a></li>
             </c:forEach>
         </ul>
     </body>
