@@ -47,7 +47,7 @@ public class AuthorServiceTest {
         authors.add(testAuthor);
         authorRepo.save(another);
         
-        assertTrue(authorRepo.save(authors).size() == 1);
+        assertTrue(authorRepo.save(authors).size() == 3);
         
         
     }
