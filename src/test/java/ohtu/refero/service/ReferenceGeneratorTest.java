@@ -33,7 +33,6 @@ public class ReferenceGeneratorTest {
     public void initialize() {
         book = new Book();
         refID = new ReferenceID();
-
     }
 
     @Test
@@ -63,5 +62,13 @@ public class ReferenceGeneratorTest {
         id = bookServ.save(book).getId();
         assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(), "Ko99a");
 
+        for (char i = 'a'; i <= 'z'; i++) {          
+            if (i == 'z') {
+                id =  bookServ.save(book).getId();
+                break;
+            }
+            bookServ.save(book);
+        }
+        assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(), "Ko99za");
     }
 }

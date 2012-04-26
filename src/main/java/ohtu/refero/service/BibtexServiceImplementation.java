@@ -28,10 +28,10 @@ public class BibtexServiceImplementation implements BibtexService {
         List<Inproceedings> inproceedings = inprocService.findAll();
         List<Book> books = bookService.findAll();
         try {
-            for (Book book : books) {
-                builder.append(BibTeXSerializer.serialize(book) + "\n\n");
-            } for (Article a : articles) {
+            for (Article a : articles) {
                 builder.append(BibTeXSerializer.serialize(a) + "\n\n");
+            } for (Book b : books) {
+                builder.append(BibTeXSerializer.serialize(b) + "\n\n");
             } for (Inproceedings i : inproceedings) {
                 builder.append(BibTeXSerializer.serialize(i) + "\n\n");
             }
