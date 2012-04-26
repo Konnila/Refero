@@ -4,6 +4,7 @@
  */
 package ohtu.refero.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import ohtu.refero.models.Author;
 import ohtu.refero.repositories.AuthorRepository;
@@ -28,18 +29,22 @@ public class AuthorServiceImp implements AuthorService {
     
     @Override
     public List<Author> save(List<Author> authors) {
+        List<Author> toRemove = new ArrayList<Author>();
         for (Author author : authors) {
             if(authorRepo.findByFirstNameAndSurName(author.getFirstName(), author.getSurName()) != null)
-                authors.remove(author);
+                toRemove.add(author);
         }
         
+        for (Author author : toRemove) {
+            authors.remove(author);
+        }
         
         return authorRepo.save(authors);
     }
 
     @Override
     public Author findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return null;
     }
     
 }
