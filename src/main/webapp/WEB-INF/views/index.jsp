@@ -15,6 +15,7 @@
             <li><a href="/article">Add article</a></li>
             <li><a href="/book">Add book</a></li>
             <li><a href="/inproceeding">Add inproceeding</a></li>
+            <li><a href="/authors">List all authors</a></li>
             <li><a href="/listbibtex">List all BiBTeXs</a></li>
         </ul>
 
@@ -23,7 +24,7 @@
         <c:forEach var="article" items="${articles}">
             <pre>
                 Author(s):
-                <c:forEach var="author" items="${article.authors}">${author.firstName} ${author.surName}
+                <c:forEach var="author" items="${article.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${article.title}
                 Year: ${article.releaseYear}
@@ -36,7 +37,7 @@
         <c:forEach var="inpro" items="${inproceedings}">
             <pre>
                 Author(s):
-                <c:forEach var="author" items="${inpro.authors}">${author.firstName} ${author.surName}
+                <c:forEach var="author" items="${inpro.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${inpro.title}
                 Year: ${inpro.releaseYear}
@@ -48,7 +49,7 @@
         <c:forEach var="book" items="${books}">
             <pre>
                 Author(s):
-                <c:forEach var="author" items="${book.authors}">${author.firstName} ${author.surName}
+                <c:forEach var="author" items="${book.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${book.title}
                 Year: ${book.releaseYear}

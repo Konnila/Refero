@@ -27,7 +27,7 @@
         <pre>
             Id: ${inproceedings.id}
             Author(s):
-            <c:forEach var="author" items="${inproceedings.authors}">${author.firstName} ${author.surName}
+            <c:forEach var="author" items="${inproceedings.authors}"><a href="/author/${author.id}">${author}</a>
             </c:forEach>
             Title: ${inproceedings.title}
             Book title: ${inproceedings.bookTitle}

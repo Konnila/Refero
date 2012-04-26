@@ -1,13 +1,19 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ohtu.refero.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
+/**
+ *
+ * @author Lauri
+ */
 public class ReferenceIDTest {
 
     ReferenceID testReference;
@@ -24,29 +30,34 @@ public class ReferenceIDTest {
     }
 
     @Test
+    public void toStringIsValid() {
+        assertEquals(testReference.toString(), "koira");
+    }
+    
+    @Test
     public void equalsIsValid() {
-        ReferenceID b = new ReferenceID();
+        ReferenceID another = new ReferenceID();
 
         //obj == null
         assertEquals(testReference.equals(null), false);
 
         //getClass() != obj.getClass()
-        assertEquals(testReference.equals(new ArticleTest()), false);
+        assertEquals(testReference.equals(new ReferenceIDTest()), false);
 
         //other.getId() == null
         testReference.setReferenceID(null);
-        b.setReferenceID(null);     
-        assertTrue(testReference.equals(b));
+        another.setReferenceID(null);
+        assertTrue(testReference.equals(another));
         
-        b.setReferenceID("kissa");
-        assertFalse(testReference.equals(b));
+        another.setReferenceID("kissaElain");
+        assertFalse(testReference.equals(another));
 
         //this.getId() == null
-        assertFalse(b.equals(testReference));
+        assertFalse(another.equals(testReference));
 
         //this.getId() != other.getId()
-        testReference.setReferenceID("koira");
-        assertFalse(testReference.equals(b));
+        testReference.setReferenceID("koiraElain");
+        assertFalse(testReference.equals(another));
 
         //this.getId() == other.getId() 
         assertTrue(testReference.equals(testReference));

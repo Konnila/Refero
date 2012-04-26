@@ -25,7 +25,7 @@
         <pre>
             Id: ${book.id}
             Author(s):
-            <c:forEach var="author" items="${book.authors}">${author.firstName} ${author.surName}
+            <c:forEach var="author" items="${book.authors}"><a href="/author/${author.id}">${author}</a>
             </c:forEach>
             Title: ${book.title}
             Publisher: ${book.publisher}
