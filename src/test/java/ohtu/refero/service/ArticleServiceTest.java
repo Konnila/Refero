@@ -22,7 +22,7 @@ public class ArticleServiceTest {
     @Before
     public void initialize() {
         testArticle = new Article();
-         List<Author> authors = new ArrayList<Author>();
+        List<Author> authors = new ArrayList<Author>();
         Author author = new Author();
         author.setFirstName("Kalle");
         author.setSurName("Havumaki");

@@ -20,7 +20,8 @@ public class BibTeXSerializerTest {
     private Book book;
     private Inproceedings i;
     private StringBuilder builder;
-   private ReferenceID refID;
+    private ReferenceID refID;
+    
     @Before
     public void setUp() {   
         article = new Article();
