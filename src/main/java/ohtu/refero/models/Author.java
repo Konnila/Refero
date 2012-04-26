@@ -1,6 +1,8 @@
 package ohtu.refero.models;
 
 import java.io.Serializable;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,6 +20,15 @@ public class Author extends JPAObject {
     @ManyToMany
     List<Inproceedings> inproceedingsReferenceList;
 
+    public Author() {
+        bookReferenceList = new ArrayList<Book>();
+        articleReferenceList = new ArrayList<Article>();
+        inproceedingsReferenceList = new ArrayList<Inproceedings>();
+    }
+
+
+    
+    
     public List<Article> getArticleReferenceList() {
         return articleReferenceList;
     }
