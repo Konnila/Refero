@@ -43,7 +43,7 @@ public class ArticleTest {
         author.setFirstName("Kalle");
         author.setSurName("Havumaki");
         authors.add(author);
-        assertEquals(testArticle.getAuthors(), authors);
+        assertEquals(testArticle.getAuthors().get(0).toString(), author.toString());
         assertEquals(testArticle.getTitle(), "t");
         assertEquals(testArticle.getJournal(), "j");
         assertEquals(testArticle.getPages(), "1-15");

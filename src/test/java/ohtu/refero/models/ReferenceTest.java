@@ -36,7 +36,7 @@ public class ReferenceTest {
         author.setFirstName("Kalle");
         author.setSurName("Havumaki");
         authors.add(author);
-        assertEquals(testReference.getAuthors(), authors);
+        assertEquals(testReference.getAuthors().get(0).toString(), author.toString());
         assertEquals(testReference.getTitle(), "t");
         assertEquals(testReference.getReleaseYear(), new Integer(1999));
         assertEquals(testReference.getAddress(), "kuNpula");

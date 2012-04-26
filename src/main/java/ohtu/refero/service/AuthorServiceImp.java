@@ -23,7 +23,7 @@ public class AuthorServiceImp implements AuthorService {
 
     @Override
     public List<Author> findAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return authorRepo.findAll();
     }
     
     @Override
