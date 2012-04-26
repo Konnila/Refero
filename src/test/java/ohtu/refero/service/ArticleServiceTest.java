@@ -1,5 +1,8 @@
 package ohtu.refero.service;
+import java.util.ArrayList;
+import java.util.List;
 import ohtu.refero.models.Article;
+import ohtu.refero.models.Author;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
@@ -19,7 +22,12 @@ public class ArticleServiceTest {
     @Before
     public void initialize() {
         testArticle = new Article();
-        testArticle.setAuthor("author");
+         List<Author> authors = new ArrayList<Author>();
+        Author author = new Author();
+        author.setFirstName("Kalle");
+        author.setSurName("Havumaki");
+        authors.add(author);
+        testArticle.setAuthors(authors);
         testArticle.setTitle("t");
         testArticle.setJournal("j");
         testArticle.setNumber(254);
