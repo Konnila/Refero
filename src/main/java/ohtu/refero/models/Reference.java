@@ -12,15 +12,22 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @MappedSuperclass
 public abstract class Reference extends JPAObject {
+    
     @ManyToMany
+    @BibTeXProperty(name = "author")
     private List<Author> authors;
+    
     @NotBlank(message = "Title can't be empty.")
     private String title;
+    
     @BibTeXProperty(name = "year")
     @NotNull(message = "Year can't be empty.")
     private Integer releaseYear;
+    
     private String publisher;
+    
     private String address;
+    
     @OneToOne
     @BibTeXId
     private ReferenceID referenceID;

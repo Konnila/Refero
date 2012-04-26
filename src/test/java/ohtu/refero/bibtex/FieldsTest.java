@@ -16,7 +16,7 @@ public class FieldsTest {
         List<String> expected = new ArrayList<String>();
         
         expected.add("id");
-        expected.add("author");
+        expected.add("authors");
         expected.add("title");
         expected.add("releaseYear");
         expected.add("publisher");
