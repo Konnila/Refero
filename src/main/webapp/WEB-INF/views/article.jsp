@@ -19,7 +19,9 @@
         
         <pre>
             Id: ${article.id}
-            Author: ${article.author}
+            Author(s):
+            <c:forEach var="author" items="${article.authors}">${author.firstName} ${author.surName}
+            </c:forEach>
             Title: ${article.title}
             Journal: ${article.journal}
             Volume: ${article.volume}

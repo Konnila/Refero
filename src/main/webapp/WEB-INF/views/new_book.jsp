@@ -23,10 +23,8 @@
         <h2>Let's add a book!</h2>
 
         <form:form method="POST" commandName="bookForm" action="book">
-
-            <form:label path="author">Author:</form:label>
-            <form:input path="author" />
-            <form:errors path ="author"/> <br>    
+            <label>Author:</label>
+            <input type="text" name="author"><br>
 
             <form:label path="title">Title:</form:label>
             <form:input path="title" />

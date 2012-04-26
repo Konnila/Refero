@@ -1,6 +1,9 @@
 package ohtu.refero.service;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import ohtu.refero.models.Author;
 import ohtu.refero.models.Inproceedings;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -23,7 +26,12 @@ public class InproceedingsServiceTest {
     @Before
     public void initialize() {
         testInpro = new Inproceedings();
-        testInpro.setAuthor("author");
+         List<Author> authors = new ArrayList<Author>();
+        Author author = new Author();
+        author.setFirstName("Kalle");
+        author.setSurName("Havumaki");
+        authors.add(author);
+        testInpro.setAuthors(authors);
         testInpro.setTitle("t");
         testInpro.setBookTitle("Book");
         testInpro.setPages("1--5");

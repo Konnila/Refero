@@ -1,5 +1,8 @@
 package ohtu.refero.bibtex;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 public class BibTeXGenerator {
     
     private StringBuffer buffer;
@@ -36,7 +39,28 @@ public class BibTeXGenerator {
         writeObjectStart();
     }
     
+    public void writeCollection(Collection collection) {
+        
+        Iterator iterator = collection.iterator();
+            
+        while (iterator.hasNext()) {
+            buffer.append(iterator.next());
+                
+            if (iterator.hasNext()) {
+                writeSeparator();
+                buffer.append(" ");
+            }
+        }            
+    }
+    
     public void writeObject(Object object) {
+        
+        if (object instanceof Collection) {
+            Collection collection = (Collection) object;
+            writeCollection(collection);
+            return;
+        }
+        
         buffer.append(object);
     }
     

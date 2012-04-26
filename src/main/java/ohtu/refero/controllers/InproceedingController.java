@@ -4,25 +4,30 @@
  */
 package ohtu.refero.controllers;
 
+import java.util.List;
 import javax.validation.Valid;
 import ohtu.refero.bibtex.BibTeXSerializer;
 import ohtu.refero.bibtex.NoIdException;
 import ohtu.refero.models.Article;
+import ohtu.refero.models.Author;
 import ohtu.refero.models.Inproceedings;
 import ohtu.refero.service.ArticleService;
+import ohtu.refero.service.AuthorService;
 import ohtu.refero.service.InproceedingsService;
+import ohtu.refero.service.StringToAuthorConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class InproceedingController {
-    
+    @Autowired
+    StringToAuthorConverter authorConv;
+    @Autowired
+    AuthorService authorServ;
     @Autowired
     InproceedingsService inprocService;
     
@@ -49,10 +54,14 @@ public class InproceedingController {
     }
     
     @RequestMapping(value = "inproceeding", method = RequestMethod.POST)
-    public String postInproceeding(@Valid @ModelAttribute("inproceedingForm") Inproceedings inproceedings, BindingResult result) {    
+    public String postInproceeding(@RequestParam String author, @Valid @ModelAttribute("inproceedingForm") Inproceedings inproceedings, BindingResult result) {    
+        FieldError fe = new FieldError("author","author", "Author field may not be empty");
+        if(author.isEmpty()) result.addError(fe);
         if (result.hasErrors())
             return "new_inproceeding";
-        
+        List<Author> auth = authorConv.convertToAuthor(author);
+        List<Author> seivatut = authorServ.save(auth);
+        inproceedings.setAuthors(seivatut);
         inprocService.save(inproceedings);
         return "redirect:/";
     }

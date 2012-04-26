@@ -4,12 +4,11 @@
  */
 package ohtu.refero.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import ohtu.refero.models.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import ohtu.refero.models.Article;
-import ohtu.refero.models.Book;
-import ohtu.refero.models.Inproceedings;
-import ohtu.refero.models.ReferenceID;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +27,10 @@ public class ReferenceGeneratorTest {
     ReferenceGenerator refGen;
     Book book;
     ReferenceID refID;
+    @Autowired
+    StringToAuthorConverter authorConv;
+    @Autowired
+    AuthorService authorServ;
 
     @Before
     public void initialize() {
@@ -38,7 +41,12 @@ public class ReferenceGeneratorTest {
 
     @Test
     public void referenceOnOneBook() {
-        book.setAuthor("Hirvikoski Kasper");
+        List<Author> authors = new ArrayList<Author>();
+        Author author = new Author();
+        author.setFirstName("Kasper");
+        author.setSurName("Hirvikoski");
+        authors.add(author);
+        book.setAuthors(authors);
         book.setTitle("Ulinoita");
         book.setPublisher("Kum-pula");
         book.setReleaseYear(2010);
@@ -48,20 +56,31 @@ public class ReferenceGeneratorTest {
     }
 
     @Test
-    public void referenceOnTwoConflictingBooks() {
-        book.setAuthor("Konnila Toni");
-        book.setTitle("Jorinooita");
-        book.setPublisher("Kumpu");
-        book.setReleaseYear(1999);
+    public void referenceOnTwoReferenceConflictingBooks() {
+        String author = "Toni Konnila";
+        List<Author> auth = authorConv.convertToAuthor(author);
+        List<Author> saved = authorServ.save(auth);
+        book.setAuthors(saved);
+        book.setTitle("Ulinoita");
+        book.setPublisher("Kum-pula");
+        book.setReleaseYear(2010);
         Long id = bookServ.save(book).getId();
-        assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(), "Ko99");
+        
+        assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(),"Ko10");
+      
+        author = "Tommi Komola";
+        auth = authorConv.convertToAuthor(author);
+        saved = authorServ.save(auth);
+        Book book2 = new Book();
+        book2.setAuthors(saved);
+        book2.setTitle("Uskomattomia tarinoita");
+        book2.setPublisher("Kumpulan kiroukset");
+        book2.setReleaseYear(2010);
+        id = bookServ.save(book2).getId();
+        
+        assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(),"Ko10a");
 
-        book.setAuthor("Konn Ton");
-        book.setTitle("Jooita");
-        book.setPublisher("Kumu");
-        book.setReleaseYear(1999);
-        id = bookServ.save(book).getId();
-        assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(), "Ko99a");
+
 
     }
 }
