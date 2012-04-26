@@ -63,9 +63,9 @@ public class BookController {
         if (result.hasErrors())
             return "new_book";
         List<Author> auth = authorConv.convertToAuthor(author);
-        List<Author> seivatut = authorServ.save(auth);
+        List<Author> saved = authorServ.save(auth);
         
-        book.setAuthors(seivatut);
+        book.setAuthors(saved);
         bookService.save(book);
 //        book.setAuthors(authorServ.save(authorConv.convertToAuthor(author)));
         
