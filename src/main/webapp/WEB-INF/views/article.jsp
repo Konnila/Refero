@@ -19,7 +19,7 @@
         
         <pre>
             Id: ${article.id}
-            Author(s):
+            <b>Author(s):</b>
             <c:forEach var="author" items="${article.authors}"><a href="/author/${author.id}">${author}</a>
             </c:forEach>
             Title: ${article.title}

@@ -26,7 +26,7 @@
 
         <c:forEach var="article" items="${author.articleReferenceList}">
             <pre>
-                Author(s):
+                <b>Author(s):</b>
                 <c:forEach var="author" items="${article.authors}">${author}
                 </c:forEach>
                 Title: ${article.title}
@@ -39,7 +39,7 @@
 
         <c:forEach var="book" items="${author.bookReferenceList}">
             <pre>
-                Author(s):
+                <b>Author(s):</b>
                 <c:forEach var="author" items="${book.authors}">${author}
                 </c:forEach>
                 Title: ${book.title}
@@ -52,7 +52,7 @@
 
         <c:forEach var="inproceedings" items="${author.inproceedingsReferenceList}">
             <pre>
-                Author(s):
+                <b>Author(s):</b>
                 <c:forEach var="author" items="${inproceedings.authors}">${author}
                 </c:forEach>
                 Title: ${inproceedings.title}

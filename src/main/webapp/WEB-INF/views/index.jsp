@@ -23,7 +23,7 @@
 
         <c:forEach var="article" items="${articles}">
             <pre>
-                Author(s):
+                <b>Author(s):</b>
                 <c:forEach var="author" items="${article.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${article.title}
@@ -36,7 +36,7 @@
 
         <c:forEach var="inpro" items="${inproceedings}">
             <pre>
-                Author(s):
+                <b>Author(s):</b>
                 <c:forEach var="author" items="${inpro.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${inpro.title}
@@ -48,7 +48,7 @@
         <h2>All books</h2>
         <c:forEach var="book" items="${books}">
             <pre>
-                Author(s):
+               <b>Author(s):</b>
                 <c:forEach var="author" items="${book.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${book.title}

@@ -61,13 +61,13 @@ public class ArticleController {
             return "new_article";
         }
         List<Author> auth = authorConv.convertToAuthor(author);   
-        List<Author> seivatut = authorServ.save(auth);
+        List<Author> saved = authorServ.save(auth);
         
        
-        article.setAuthors(seivatut);
+        article.setAuthors(saved);
         Article art = articleService.save(article);
         
-         for (Author author1 : seivatut) {
+         for (Author author1 : saved) {
             authorServ.setArticle(author1.getId(), art);
         }
         
