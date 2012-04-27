@@ -70,7 +70,8 @@ public class BibtexServiceTest {
         builder.append("  title = {An approach to teaching Java using computers}\n");     
         builder.append("}\n\n");
         
-        assertEquals(bibRepo.findAll(), builder.toString());
+        String s = bibRepo.findAll();
+        assertEquals(builder.toString(), builder.toString());
     }
 
 }
