@@ -53,7 +53,7 @@ public class ArticleController {
 
     @RequestMapping(value = "article", method = RequestMethod.POST)
     public String postArticle(@RequestParam String author, @Valid @ModelAttribute("articleForm") Article article, BindingResult result) {
-        FieldError fe = new FieldError("author", "author", "Author field may not be empty");
+        FieldError fe = new FieldError("articleForm", "author", "Author field may not be empty");
         if (author.isEmpty()) {
             result.addError(fe);
         }
@@ -62,8 +62,7 @@ public class ArticleController {
         }
         List<Author> auth = authorConv.convertToAuthor(author);   
         List<Author> saved = authorServ.save(auth);
-        
-       
+             
         article.setAuthors(saved);
         Article art = articleService.save(article);
         

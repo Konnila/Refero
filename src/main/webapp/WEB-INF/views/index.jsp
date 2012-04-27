@@ -30,7 +30,6 @@
                 Year: ${article.releaseYear}
                 <a href="/article/${article.id}">More details</a>
             </pre>
----------------------------------------------------------------------
         </c:forEach>
 
         <h2>All inproceedings</h2>
@@ -44,7 +43,6 @@
                 Year: ${inpro.releaseYear}
                 <a href="/inproceeding/${inpro.id}">More details</a>
             </pre>
----------------------------------------------------------------------
         </c:forEach>
 
         <h2>All books</h2>
@@ -57,7 +55,6 @@
                 Year: ${book.releaseYear}
                 <a href="/book/${book.id}">More details</a>
             </pre>
----------------------------------------------------------------------
         </c:forEach>
 
     </body>
