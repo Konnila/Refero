@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,17 +17,21 @@
         </ul>
 
         <h2>Let's add an article!</h2>
-
+        
+        <ul>
+            <li>Bolded fields are required to fill!</li>
+        </ul>
+        
         <form:form method="POST" commandName="articleForm" action="article">
 
-            <label>Author:</label>
+            <label><b>Author:</b></label>
             <input type="text" name="author"><br>   
 
-            <form:label path="title">Title:</form:label>
+            <form:label path="title"><b>Title:</b></form:label>
             <form:input path="title" />
             <form:errors path ="title"/><br>
 
-            <form:label path="journal">Journal:</form:label>
+            <form:label path="journal"><b>Journal:</b></form:label>
             <form:input path="journal" />
             <form:errors path ="journal"/><br>
 
@@ -42,7 +47,7 @@
             <form:input path="pages" />
             <form:errors path ="pages"/><br>
 
-            <form:label path="releaseYear">Year:</form:label>
+            <form:label path="releaseYear"><b>Year:</b></form:label>
             <form:input path="releaseYear" />
             <form:errors path ="releaseYear"/><br>
 

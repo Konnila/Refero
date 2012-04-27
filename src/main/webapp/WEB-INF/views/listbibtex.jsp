@@ -21,6 +21,6 @@
             <li><a href="/">Index</a></li>
         </ul>
         
-        <textarea rows="100"cols="100">${bibtex}</textarea>
+        <textarea rows="50"cols="50">${bibtex}</textarea>
     </body>
 </html>

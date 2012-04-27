@@ -22,7 +22,7 @@
             <li><a href="/">Index</a></li>
         </ul>
 
-        <h2>${inproceedings.title}</h2>
+        <h2># ${inproceedings.title} #</h2>
         
         <pre>
             Id: ${inproceedings.id}

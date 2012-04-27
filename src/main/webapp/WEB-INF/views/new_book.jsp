@@ -21,20 +21,25 @@
         </ul>
 
         <h2>Let's add a book!</h2>
-
+        
+        <ul>
+            <li>Bolded fields are required to fill!</li>
+        </ul>
+        <br>
+        
         <form:form method="POST" commandName="bookForm" action="book">
-            <label>Author:</label>
+            <label><b>Author:</b></label>
             <input type="text" name="author"><br>
 
-            <form:label path="title">Title:</form:label>
+            <form:label path="title"><b>Title:</b></form:label>
             <form:input path="title" />
             <form:errors path ="title"/><br>
 
-            <form:label path="publisher">Publisher:</form:label>
+            <form:label path="publisher"><b>Publisher:</b></form:label>
             <form:input path="publisher" />
             <form:errors path ="publisher"/><br>
 
-            <form:label path="releaseYear">Year:</form:label>
+            <form:label path="releaseYear"><b>Year:</b></form:label>
             <form:input path="releaseYear" />
             <form:errors path ="releaseYear"/><br>
 
