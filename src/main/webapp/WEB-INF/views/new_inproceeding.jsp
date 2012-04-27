@@ -35,11 +35,11 @@
             <form:input path="title" />
             <form:errors path ="title"/><br>
 
-            <form:label path="bookTitle">Book title:</form:label>
+            <form:label path="bookTitle"><b>Book title:</b></form:label>
             <form:input path="bookTitle" />
             <form:errors path ="bookTitle"/><br>
 
-            <form:label path="releaseYear">Year:</form:label>
+            <form:label path="releaseYear"><b>Year:</b></form:label>
             <form:input path="releaseYear" />
             <form:errors path ="releaseYear"/><br>
 
@@ -47,7 +47,7 @@
             <form:input path="pages" />
             <form:errors path ="pages"/><br>
 
-            <form:label path="publisher"><b>Publisher:</b></form:label>
+            <form:label path="publisher">Publisher:</form:label>
             <form:input path="publisher" />
             <form:errors path ="publisher"/><br>
 
