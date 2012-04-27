@@ -42,8 +42,7 @@ public class AuthorServiceImp implements AuthorService {
         save(auth);
     }
     @Override
-    public List<Author> save(List<Author> authors) {
-        
+    public List<Author> save(List<Author> authors) {      
         List<Author> actualAuthors = new ArrayList<Author>();
         
         for (Author author : authors) {
@@ -53,11 +52,11 @@ public class AuthorServiceImp implements AuthorService {
                actualAuthors.add(authorRepo.findByFirstNameAndSurName(author.getFirstName(), author.getSurName())); 
             }
         }
-        
+       
         return actualAuthors;
+
     }
     
-
     @Override
     public Author findById(Long id) {
         return authorRepo.findOne(id);

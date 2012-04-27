@@ -80,7 +80,14 @@ public class ReferenceGeneratorTest {
         
         assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(),"Ko10a");
 
-
+        for (char i = 'a'; i < 'z'; i++) {
+            if (i == 'a') {
+                id = bookServ.save(book).getId();
+            }
+            bookServ.save(book);           
+        }
+        
+        assertEquals(bookServ.findById(id).getReferenceID().getReferenceID(),"Ko10za");
 
     }
 }
