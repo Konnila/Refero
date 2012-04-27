@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import ohtu.refero.models.Article;
 import ohtu.refero.models.Author;
+import ohtu.refero.models.Book;
+import ohtu.refero.models.Inproceedings;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -31,8 +33,8 @@ public class AuthorServiceTest {
 
     @Test
     public void addAndfindAuthorTest() {
-        authorRepo.save(testAuthor);      
-        assertFalse(authorRepo.findAll() == null);
+        testAuthor = authorRepo.save(testAuthor);      
+        assertTrue(testAuthor.getFirstName().equals("KONNA"));
     }
     
     @Test
@@ -47,14 +49,13 @@ public class AuthorServiceTest {
         authors.add(testAuthor);
         authorRepo.save(another);
         
-        assertTrue(authorRepo.save(authors).size() == 3);
-        
-        
+        assertTrue(authorRepo.save(authors).size() == 3);   
     }
     
     @Test
-    public void findByIDNotSupported() {
-        assertEquals(authorRepo.findById(25l), null);
+    public void findByID() {
+        testAuthor.setId(25L);
+        authorRepo.save(testAuthor);
+        assertEquals(authorRepo.findById(25L).getFirstName(), testAuthor.getFirstName());
     }
-    
 }
