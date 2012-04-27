@@ -66,7 +66,12 @@ public class BookController {
         List<Author> saved = authorServ.save(auth);
         
         book.setAuthors(saved);
-        bookService.save(book);
+        Book bok = bookService.save(book);
+        
+        
+         for (Author author1 : saved) {
+            authorServ.setBook(author1.getId(), bok);
+        }
 //        book.setAuthors(authorServ.save(authorConv.convertToAuthor(author)));
         
 //        bookService.save(book);

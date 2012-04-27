@@ -1,9 +1,12 @@
 package ohtu.refero.models;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import ohtu.refero.bibtex.BibTeXProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -16,7 +19,11 @@ public class Article extends Reference {
     @Min(value = 1, message = "Number must be at least 1.")
     private Integer number;
     @Pattern(regexp = "\\d+--\\d+|", message = "Insert the pagenumbers in a format like: 1--25")
-   
+    
+
+
+    
+    
     private String pages;
 
     public String getJournal() {

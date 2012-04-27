@@ -60,9 +60,13 @@ public class InproceedingController {
         if (result.hasErrors())
             return "new_inproceeding";
         List<Author> auth = authorConv.convertToAuthor(author);
-        List<Author> seivatut = authorServ.save(auth);
-        inproceedings.setAuthors(seivatut);
-        inprocService.save(inproceedings);
+        List<Author> saved = authorServ.save(auth);
+        inproceedings.setAuthors(saved);
+        Inproceedings inp = inprocService.save(inproceedings);
+        
+        for (Author author1 : saved) {
+            authorServ.setInproceedings(author1.getId(), inp);
+        }
         return "redirect:/";
     }
 }

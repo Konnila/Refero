@@ -6,10 +6,15 @@ package ohtu.refero.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import ohtu.refero.models.Article;
 import ohtu.refero.models.Author;
+import ohtu.refero.models.Book;
+import ohtu.refero.models.Inproceedings;
 import ohtu.refero.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AuthorServiceImp implements AuthorService {
@@ -27,6 +32,15 @@ public class AuthorServiceImp implements AuthorService {
         return authorRepo.findAll();
     }
     
+    @Modifying
+    @Transactional
+    public void setArticle(Long id, Article article) {
+        Author auth = authorRepo.findOne(id);
+        List<Article> articleList = auth.getArticleReferenceList();
+        articleList.add(article);
+        auth.setArticleReferenceList(articleList);
+        save(auth);
+    }
     @Override
     public List<Author> save(List<Author> authors) {
         
@@ -47,6 +61,24 @@ public class AuthorServiceImp implements AuthorService {
     @Override
     public Author findById(Long id) {
         return authorRepo.findOne(id);
+    }
+
+    @Override
+    public void setBook(Long id, Book book) {
+        Author auth = authorRepo.findOne(id);
+        List<Book> bookList = auth.getBookReferenceList();
+        bookList.add(book);
+        auth.setBookReferenceList(bookList);
+        save(auth);
+    }
+
+    @Override
+    public void setInproceedings(Long id, Inproceedings inproc) {
+        Author auth = authorRepo.findOne(id);
+        List<Inproceedings> inproList = auth.getInproceedingsReferenceList();
+        inproList.add(inproc);
+        auth.setInproceedingsReferenceList(inproList);
+        save(auth);
     }
     
 }

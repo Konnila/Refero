@@ -1,5 +1,6 @@
 package ohtu.refero.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +27,7 @@ public class ArticleController {
     ArticleService articleService;
     @Autowired
     AuthorService authorServ;
-
+    
     @RequestMapping(value = "article", method = RequestMethod.GET)
     public String directToForm(Model model) {
         model.addAttribute("articleForm", new Article());
@@ -59,10 +60,18 @@ public class ArticleController {
         if (result.hasErrors()) {
             return "new_article";
         }
-        List<Author> auth = authorConv.convertToAuthor(author);
+        List<Author> auth = authorConv.convertToAuthor(author);   
         List<Author> seivatut = authorServ.save(auth);
+        
+       
         article.setAuthors(seivatut);
-        articleService.save(article);
+        Article art = articleService.save(article);
+        
+         for (Author author1 : seivatut) {
+            authorServ.setArticle(author1.getId(), art);
+        }
+        
+        
         return "redirect:/";
     }
 }
