@@ -57,7 +57,7 @@
                 </c:forEach>
                 Title: ${inproceedings.title}
                 Year: ${inproceedings.releaseYear}
-                <a href="/inproceedings/${inproceedings.id}">More details</a>
+                <a href="/inproceeding/${inproceedings.id}">More details</a>
             </pre>
         </c:forEach>
     </body>

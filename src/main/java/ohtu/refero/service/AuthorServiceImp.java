@@ -46,7 +46,7 @@ public class AuthorServiceImp implements AuthorService {
         auth.setArticleReferenceList(articleList);
         save(auth);
     }
-    
+    @Transactional
     @Override
     public List<Author> save(List<Author> authors) {      
         List<Author> actualAuthors = new ArrayList<Author>();
@@ -67,7 +67,8 @@ public class AuthorServiceImp implements AuthorService {
     public Author findById(Long id) {
         return authorRepo.findOne(id);
     }
-
+    @Modifying
+    @Transactional
     @Override
     public void setBook(Long id, Book book) {
         Author auth = authorRepo.findOne(id);
@@ -81,7 +82,8 @@ public class AuthorServiceImp implements AuthorService {
         auth.setBookReferenceList(bookList);
         save(auth);
     }
-
+    @Modifying
+    @Transactional
     @Override
     public void setInproceedings(Long id, Inproceedings inproc) {
         Author auth = authorRepo.findOne(id);
