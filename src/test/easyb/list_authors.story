@@ -144,3 +144,55 @@ scenario 'user can list all authors', {
         driver.getPageSource().contains("TONI KONNI")
     }
 }
+
+scenario 'an element can have multiple authors', {
+
+    given 'command add new article (or new book) selected', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:9090");
+        element = driver.findElement(By.linkText("Add article"));       
+        element.click();
+    }
+
+
+    when 'add multiple authors', {
+        element = driver.findElement(By.name("author"))
+        assertNotNull(element)
+
+        element.sendKeys("TONI KONNI, KASPER HIRVI, caps LOCK")
+
+        element = driver.findElement(By.name("title"))
+        assertNotNull(element)
+
+        element.sendKeys("Adventures of Captain Hadoque")
+
+        element = driver.findElement(By.name("journal"))
+        assertNotNull(element)
+
+        element.sendKeys("The Mighty Sea Adventures")
+
+        element = driver.findElement(By.name("volume"))
+        assertNotNull(element)
+
+        element.sendKeys("2")
+
+        element = driver.findElement(By.name("number"))
+        assertNotNull(element)
+
+        element.sendKeys("10")
+
+        element = driver.findElement(By.name("releaseYear"))
+        assertNotNull(element)
+
+        element.sendKeys("2012")
+
+        element.submit()
+    }
+
+    then 'every author is listed in element information', {
+        driver.get("http://localhost:9090");
+        element = driver.findElement(By.linkText("More details"));       
+        element.click();
+        driver.getPageSource().contains("author = {TONI KONNI, KASPER HIRVI, caps LOCK}")
+    }
+}
