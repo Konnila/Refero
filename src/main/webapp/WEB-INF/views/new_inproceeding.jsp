@@ -25,7 +25,6 @@
         <ul>
             <li>Bolded fields are required to fill!</li>
         </ul>
-        <br>
         
         <form:form method="POST" commandName="inproceedingForm" action="inproceeding">
 

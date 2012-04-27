@@ -25,7 +25,6 @@
         <ul>
             <li>Bolded fields are required to fill!</li>
         </ul>
-        <br>
         
         <form:form method="POST" commandName="bookForm" action="book">
             <label><b>Author:</b></label>
