@@ -19,11 +19,6 @@ public class Article extends Reference {
     @Min(value = 1, message = "Number must be at least 1.")
     private Integer number;
     @Pattern(regexp = "\\d+--\\d+|", message = "Insert the pagenumbers in a format like: 1--25")
-    
-
-
-    
-    
     private String pages;
 
     public String getJournal() {

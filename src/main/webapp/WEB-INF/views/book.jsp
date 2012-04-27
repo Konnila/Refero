@@ -20,7 +20,7 @@
             <li><a href="/">Index</a></li>
         </ul>
 
-        <h2>${book.title}</h2>
+        <h2># ${book.title} #</h2>
 
         <pre>
             Id: ${book.id}

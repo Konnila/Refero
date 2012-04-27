@@ -20,14 +20,14 @@
             <li><a href="/">Index</a></li>
         </ul>
 
-        <h2>${author.firstName} ${author.surName}</h2>
+        <h2># ${author.firstName} ${author.surName} #</h2>
 
         <h2>All articles from this author</h2>
 
         <c:forEach var="article" items="${author.articleReferenceList}">
             <pre>
                 <b>Author(s):</b>
-                <c:forEach var="author" items="${article.authors}">${author}
+                <c:forEach var="author" items="${article.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${article.title}
                 Year: ${article.releaseYear}
@@ -53,7 +53,7 @@
         <c:forEach var="inproceedings" items="${author.inproceedingsReferenceList}">
             <pre>
                 <b>Author(s):</b>
-                <c:forEach var="author" items="${inproceedings.authors}">${author}
+                <c:forEach var="author" items="${inproceedings.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${inproceedings.title}
                 Year: ${inproceedings.releaseYear}

@@ -37,10 +37,16 @@ public class AuthorServiceImp implements AuthorService {
     public void setArticle(Long id, Article article) {
         Author auth = authorRepo.findOne(id);
         List<Article> articleList = auth.getArticleReferenceList();
+        
+        if (articleList == null) {
+            articleList = new ArrayList<Article>();
+        }
+        
         articleList.add(article);
         auth.setArticleReferenceList(articleList);
         save(auth);
     }
+    
     @Override
     public List<Author> save(List<Author> authors) {      
         List<Author> actualAuthors = new ArrayList<Author>();
@@ -66,6 +72,11 @@ public class AuthorServiceImp implements AuthorService {
     public void setBook(Long id, Book book) {
         Author auth = authorRepo.findOne(id);
         List<Book> bookList = auth.getBookReferenceList();
+        
+        if (bookList == null) {
+            bookList = new ArrayList<Book>();
+        }
+        
         bookList.add(book);
         auth.setBookReferenceList(bookList);
         save(auth);
@@ -75,6 +86,11 @@ public class AuthorServiceImp implements AuthorService {
     public void setInproceedings(Long id, Inproceedings inproc) {
         Author auth = authorRepo.findOne(id);
         List<Inproceedings> inproList = auth.getInproceedingsReferenceList();
+        
+        if (inproList == null) {
+            inproList = new ArrayList<Inproceedings>();
+        }
+        
         inproList.add(inproc);
         auth.setInproceedingsReferenceList(inproList);
         save(auth);

@@ -21,13 +21,17 @@
         </ul>
 
         <h2>Let's add an inproceeding!</h2>
-
+        
+        <ul>
+            <li>Bolded fields are required to fill!</li>
+        </ul>
+        
         <form:form method="POST" commandName="inproceedingForm" action="inproceeding">
 
-            <label>Author:</label>
+            <label><b>Author:</b></label>
             <input type="text" name="author"><br>  
 
-            <form:label path="title">Title:</form:label>
+            <form:label path="title"><b>Title:</b></form:label>
             <form:input path="title" />
             <form:errors path ="title"/><br>
 
@@ -43,7 +47,7 @@
             <form:input path="pages" />
             <form:errors path ="pages"/><br>
 
-            <form:label path="publisher">Publisher:</form:label>
+            <form:label path="publisher"><b>Publisher:</b></form:label>
             <form:input path="publisher" />
             <form:errors path ="publisher"/><br>
 

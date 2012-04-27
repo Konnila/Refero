@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import ohtu.refero.bibtex.BibTeXId;
 import ohtu.refero.bibtex.BibTeXProperty;
@@ -19,6 +20,7 @@ public abstract class Reference extends JPAObject {
     private String title;
     
     @BibTeXProperty(name = "year")
+    @Min(1900)
     @NotNull(message = "Year can't be empty.")
     private Integer releaseYear;
     
@@ -32,14 +34,6 @@ public abstract class Reference extends JPAObject {
     @BibTeXId
     private ReferenceID referenceID;
 
-//    private String referenceID;
-//    public String getReferenceID() {
-//        return referenceID;
-//    }
-//
-//    public void setReferenceID(String referenceID) {
-//        this.referenceID = referenceID;
-//    }
     public String getAddress() {
         return address;
     }
@@ -55,10 +49,6 @@ public abstract class Reference extends JPAObject {
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
-
-
-
-
 
     public String getTitle() {
         return title;

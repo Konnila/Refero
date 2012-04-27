@@ -15,7 +15,7 @@
             <li><a href="/">Index</a></li>
         </ul>
 
-        <h2>${article.title}</h2>
+        <h2># ${article.title} #</h2>
         
         <pre>
             Id: ${article.id}
