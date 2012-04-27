@@ -40,7 +40,7 @@
         <c:forEach var="book" items="${author.bookReferenceList}">
             <pre>
                 <b>Author(s):</b>
-                <c:forEach var="author" items="${book.authors}">${author}
+                <c:forEach var="author" items="${book.authors}"><a href="/author/${author.id}">${author}</a>
                 </c:forEach>
                 Title: ${book.title}
                 Year: ${book.releaseYear}
